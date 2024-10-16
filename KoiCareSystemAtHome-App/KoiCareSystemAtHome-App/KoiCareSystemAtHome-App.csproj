@@ -14,6 +14,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MahApps.Metro.IconPacks" Version="5.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="img\logo.png.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
