@@ -18,6 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\KoiCare_Services\KoiCare_Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="img\logo.png.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

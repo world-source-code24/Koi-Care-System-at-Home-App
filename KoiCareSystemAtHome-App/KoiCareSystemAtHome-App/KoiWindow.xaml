@@ -8,8 +8,8 @@
     xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
     mc:Ignorable="d"
 
-    Title="MainWindow" Height="720"  Width="1080" WindowStartupLocation="CenterScreen" Background="Transparent" WindowStyle="None"
-        AllowsTransparency="True">
+    Title="KoiManagement" Height="720"  Width="1080" WindowStartupLocation="CenterScreen" Background="Transparent" WindowStyle="None"
+        AllowsTransparency="True" Loaded="Window_Loaded">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
     </Window.Resources>
@@ -161,48 +161,38 @@
                 <!--Filter Textbox-->
                 <Grid Width="200" HorizontalAlignment="Right" Grid.Row="4">
                     <TextBlock Margin="15 0" VerticalAlignment="Center" Foreground="#B0B9C6" IsHitTestVisible="False"
-                           Panel.ZIndex="1" Text="Search in Members ..."
-                           Visibility="{Binding ElementName=textBoxFilter, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" />
-
-                    <TextBox Name="textBoxFilter" Style="{StaticResource filterTextBox}"/>
+                       Panel.ZIndex="1" Text="Search in Members ..." 
+                       Visibility="{Binding ElementName=textBoxFilter, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" />
+                    <TextBox Name="textBoxFilter" Style="{StaticResource filterTextBox}" 
+                     Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}"
+                     TextChanged="FilterTextChanged" />
                 </Grid>
 
                 <!--Members Data Grid-->
                 <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="KoiDataGrid" Style="{DynamicResource DataGridStyle1}">
                     <DataGrid.Columns>
-                        <DataGridCheckBoxColumn Header="C" CanUserResize="False" Width="auto" ElementStyle="{StaticResource CheckBoxStyle1}">
-                            <DataGridCheckBoxColumn.HeaderTemplate>
-                                <DataTemplate>
-                                    <CheckBox Style="{StaticResource CheckBoxStyle1}"/>
-                                </DataTemplate>
-                            </DataGridCheckBoxColumn.HeaderTemplate>
-                        </DataGridCheckBoxColumn>
-                        <DataGridTextColumn Header="#" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Number}"/>
-                        <DataGridTemplateColumn Header="Member" IsReadOnly="True" Width="*">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Border Width="25" Height="25" CornerRadius="50" Margin="0 0 10 0" Background="{Binding BgColor}">
-                                            <TextBlock Text="{Binding Character}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Margin="0 0 0 1"/>
-                                        </Border>
+                        
+                        <DataGridTextColumn Header="KoiId" Binding="{Binding KoiId}" IsReadOnly="True" Width="*" />
+                        <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True" Width="*" />
+                        <DataGridTextColumn Header="Age" Binding="{Binding Age}" IsReadOnly="True" Width="*" />
+                        <DataGridTextColumn Header="Sex" Binding="{Binding Sex}" IsReadOnly="True" Width="*" />
+                        <DataGridTextColumn Header="Breed" Binding="{Binding Breed}" IsReadOnly="True" Width="*" />
 
-                                        <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTextColumn Header="Position" Binding="{Binding Position}" IsReadOnly="True" Width="*"/>
-                        <DataGridTextColumn Header="Email Address" Binding="{Binding Email}" IsReadOnly="True" Width="*"/>
-                        <DataGridTextColumn Header="Phone Number" Binding="{Binding Phone}" IsReadOnly="True" Width="*"/>
                         <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <Button Style="{StaticResource gridEditButton}">
+                                        <Button Style="{StaticResource gridEditButton}" Click="DetailButton_Click">
                                             <Icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}"/>
+                                            <Button.CommandParameter>
+                                                <Binding Path="KoiId" />
+                                            </Button.CommandParameter>
                                         </Button>
-                                        <Button Margin="5 0 0 0" Style="{StaticResource gridRemoveButton}">
+                                        <Button Margin="5 0 0 0" Style="{StaticResource gridRemoveButton}" Click="DeleteButton_Click">
                                             <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>
+                                            <Button.CommandParameter>
+                                                <Binding Path="KoiId" />
+                                            </Button.CommandParameter>
                                         </Button>
                                     </StackPanel>
                                 </DataTemplate>
@@ -230,11 +220,11 @@
                             </Grid.RowDefinitions>
                             <!--Column 1-->
                             <Border Width="200" Height="200" Margin="10 0 10 0" Background="White" Grid.Row="0" Grid.RowSpan="3" HorizontalAlignment="Center">
-                                <Image Name="KoiImg" Stretch="Uniform" />
+                                <Image Name="koiImg" Stretch="Uniform" />
                             </Border>
                             <StackPanel Orientation="Vertical" Margin="0 5"  Grid.Row="4">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 15 0 0">
-                                    <Button Style="{StaticResource selectButton}" Click="SelectImg_Click" >
+                                    <Button Style="{StaticResource selectButton}" Click="SelectImg_Click" IsEnabled="{Binding IsEditMode}">
                                         <StackPanel Orientation="Horizontal">
                                             <Icon:PackIconMaterial Kind="Image" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
                                             <TextBlock Text="Select Image"/>
@@ -246,46 +236,46 @@
                             <!---Column 2-->
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="1" Grid.Row="0">
                                 <TextBlock Text="Name:" VerticalAlignment="Center"/>
-                                <TextBox Name="koiName" Margin="0 5"/>
+                                <TextBox Name="koiName" Margin="0 5" IsEnabled="{Binding IsEditMode}"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="1" Grid.Row="1">
                                 <TextBlock Text="Sex:" VerticalAlignment="Center"/>
-                                <ComboBox Name="koiSex" Margin="0 5">
+                                <ComboBox Name="koiSex" Margin="0 5" IsEnabled="{Binding IsEditMode}">
                                     <ComboBoxItem Content="Male" />
                                     <ComboBoxItem Content="Female" />
                                 </ComboBox>
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="1" Grid.Row="2">
-                                <TextBlock Text="Brreed:" VerticalAlignment="Center"/>
-                                <TextBox Name="koiBreed" Margin="0 5"/>
+                                <TextBlock Text="Breed:" VerticalAlignment="Center"/>
+                                <TextBox Name="koiBreed" Margin="0 5" IsEnabled="{Binding IsEditMode}"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="1" Grid.Row="3">
                                 <TextBlock Text="Pond Id:" VerticalAlignment="Center"/>
-                                <TextBox Name="koiPondId" Margin="0 5"/>
+                                <TextBox Name="koiPondId" PreviewTextInput="NumberOnly" Margin="0 5" IsEnabled="{Binding IsEditMode}"/>
                             </StackPanel>
 
                             <!---Column 3-->
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="2" Grid.Row="0">
-                                <TextBlock Text="Age:" VerticalAlignment="Center" PreviewTextInput="NumberOnly"/>
-                                <TextBox Name="koiAge" Margin="0 5"/>
+                                <TextBlock Text="Age:" VerticalAlignment="Center" />
+                                <TextBox Name="koiAge" Margin="0 5" IsEnabled="{Binding IsEditMode}" PreviewTextInput="NumberOnly"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="2" Grid.Row="1">
-                                <TextBlock Text="Weight:" VerticalAlignment="Center" PreviewTextInput="NumberOnly"/>
-                                <TextBox Name="koiWeight" Margin="0 5" />
+                                <TextBlock Text="Weight:" VerticalAlignment="Center" />
+                                <TextBox Name="koiWeight" Margin="0 5" IsEnabled="{Binding IsEditMode}" PreviewTextInput="NumberOnly"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="2" Grid.Row="2">
-                                <TextBlock Text="Lenght:" VerticalAlignment="Center" PreviewTextInput="NumberOnly"/>
-                                <TextBox Name="koiLenght" Margin="0 5"/>
+                                <TextBlock Text="Lenght:" VerticalAlignment="Center" />
+                                <TextBox Name="koiLenght" Margin="0 5" IsEnabled="{Binding IsEditMode}" PreviewTextInput="NumberOnly"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="2" Grid.Row="3">
                                 <TextBlock Text="Physique:" VerticalAlignment="Center"/>
-                                <TextBox Name="koiPhysique" Margin="0 5" PreviewTextInput="NumberOnly"/>
+                                <TextBox Name="koiPhysique" Margin="0 5"  IsEnabled="{Binding IsEditMode}"/>
                             </StackPanel>
                         </Grid>
 
@@ -293,11 +283,11 @@
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 10 0 0">
                             <Button Style="{StaticResource addButton}" Click="EditKoi_Click" Margin="0 20 10 0">
                                 <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="ApplicationEdit" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
-                                    <TextBlock Text="Edit Koi"/>
+                                    <Icon:PackIconMaterial Name="iconEdit" Kind="ApplicationEdit" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
+                                    <TextBlock Name="btnEdit"  Text="Edit"/>
                                 </StackPanel>
                             </Button>
-                            <Button Style="{StaticResource addButton}" Click="CancelAddKoi_Click">
+                            <Button Style="{StaticResource addButton}" Click="CancelEditKoi_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Cancel" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
                                     <TextBlock Text="Cancle"/>
@@ -356,34 +346,34 @@
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="1" Grid.Row="2">
-                                <TextBlock Text="Brreed:" VerticalAlignment="Center"/>
+                                <TextBlock Text="Breed:" VerticalAlignment="Center"/>
                                 <TextBox Name="breed" Margin="0 5"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="1" Grid.Row="3">
                                 <TextBlock Text="Pond Id:" VerticalAlignment="Center"/>
-                                <TextBox Name="pondId" Margin="0 5"/>
+                                <TextBox Name="pondId" Margin="0 5" PreviewTextInput="NumberOnly"/>
                             </StackPanel>
                             
                             <!---Column 3-->
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="2" Grid.Row="0">
                                 <TextBlock Text="Age:" VerticalAlignment="Center" PreviewTextInput="NumberOnly"/>
-                                <TextBox Name="age" Margin="0 5"/>
+                                <TextBox Name="age" PreviewTextInput="NumberOnly" Margin="0 5"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="2" Grid.Row="1">
-                                <TextBlock Text="Weight:" VerticalAlignment="Center" PreviewTextInput="NumberOnly"/>
-                                <TextBox Name="weight" Margin="0 5" />
+                                <TextBlock Text="Weight:" VerticalAlignment="Center" />
+                                <TextBox Name="weight" PreviewTextInput="NumberOnly" Margin="0 5" />
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="2" Grid.Row="2">
-                                <TextBlock Text="Lenght:" VerticalAlignment="Center" PreviewTextInput="NumberOnly"/>
-                                <TextBox Name="lenght" Margin="0 5"/>
+                                <TextBlock Text="Lenght:" VerticalAlignment="Center" />
+                                <TextBox Name="lenght" PreviewTextInput="NumberOnly" Margin="0 5"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="2" Grid.Row="3">
                                 <TextBlock Text="Physique:" VerticalAlignment="Center"/>
-                                <TextBox Name="physique" Margin="0 5" PreviewTextInput="NumberOnly"/>
+                                <TextBox Name="physique" Margin="0 5"/>
                             </StackPanel>
                         </Grid>
 
