@@ -382,7 +382,7 @@ namespace KoiCareSystemAtHome_App
             {
                 Name = name.Text,
                 Age = int.Parse(age.Text),
-                Breed = koiBreed.Text,
+                Breed = breed.Text,
                 Length = decimal.Parse(lenght.Text),
                 Weight = decimal.Parse(weight.Text),
                 Sex = (sex.SelectedItem as ComboBoxItem).Content.ToString().Equals("Male") ? true : false,

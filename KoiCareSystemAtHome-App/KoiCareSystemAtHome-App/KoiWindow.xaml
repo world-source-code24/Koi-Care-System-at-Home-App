@@ -161,7 +161,7 @@
                 <!--Filter Textbox-->
                 <Grid Width="200" HorizontalAlignment="Right" Grid.Row="4">
                     <TextBlock Margin="15 0" VerticalAlignment="Center" Foreground="#B0B9C6" IsHitTestVisible="False"
-                       Panel.ZIndex="1" Text="Search in Members ..." 
+                       Panel.ZIndex="1" Text="Search by Name ..." 
                        Visibility="{Binding ElementName=textBoxFilter, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" />
                     <TextBox Name="textBoxFilter" Style="{StaticResource filterTextBox}" 
                      Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}"
@@ -236,7 +236,7 @@
                             <!---Column 2-->
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="1" Grid.Row="0">
                                 <TextBlock Text="Name:" VerticalAlignment="Center"/>
-                                <TextBox Name="koiName" Margin="0 5" IsEnabled="{Binding IsEditMode}"/>
+                                <TextBox Name="koiName" Height="25" FontSize="16" Margin="0 5" IsEnabled="{Binding IsEditMode}"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="1" Grid.Row="1">
@@ -249,33 +249,33 @@
 
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="1" Grid.Row="2">
                                 <TextBlock Text="Breed:" VerticalAlignment="Center"/>
-                                <TextBox Name="koiBreed" Margin="0 5" IsEnabled="{Binding IsEditMode}"/>
+                                <TextBox Name="koiBreed" Height="25" FontSize="16" Margin="0 5" IsEnabled="{Binding IsEditMode}"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="1" Grid.Row="3">
                                 <TextBlock Text="Pond Id:" VerticalAlignment="Center"/>
-                                <TextBox Name="koiPondId" PreviewTextInput="NumberOnly" Margin="0 5" IsEnabled="{Binding IsEditMode}"/>
+                                <TextBox Name="koiPondId" Height="25" FontSize="16" PreviewTextInput="NumberOnly" Margin="0 5" IsEnabled="{Binding IsEditMode}"/>
                             </StackPanel>
 
                             <!---Column 3-->
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="2" Grid.Row="0">
                                 <TextBlock Text="Age:" VerticalAlignment="Center" />
-                                <TextBox Name="koiAge" Margin="0 5" IsEnabled="{Binding IsEditMode}" PreviewTextInput="NumberOnly"/>
+                                <TextBox Name="koiAge" Height="25" FontSize="16" Margin="0 5" IsEnabled="{Binding IsEditMode}" PreviewTextInput="NumberOnly"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="2" Grid.Row="1">
                                 <TextBlock Text="Weight:" VerticalAlignment="Center" />
-                                <TextBox Name="koiWeight" Margin="0 5" IsEnabled="{Binding IsEditMode}" PreviewTextInput="NumberOnly"/>
+                                <TextBox Name="koiWeight" Height="25" FontSize="16" Margin="0 5" IsEnabled="{Binding IsEditMode}" PreviewTextInput="NumberOnly"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="2" Grid.Row="2">
                                 <TextBlock Text="Lenght:" VerticalAlignment="Center" />
-                                <TextBox Name="koiLenght" Margin="0 5" IsEnabled="{Binding IsEditMode}" PreviewTextInput="NumberOnly"/>
+                                <TextBox Name="koiLenght" Height="25" FontSize="16" Margin="0 5" IsEnabled="{Binding IsEditMode}" PreviewTextInput="NumberOnly"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="2" Grid.Row="3">
                                 <TextBlock Text="Physique:" VerticalAlignment="Center"/>
-                                <TextBox Name="koiPhysique" Margin="0 5"  IsEnabled="{Binding IsEditMode}"/>
+                                <TextBox Name="koiPhysique" Height="25" FontSize="16" Margin="0 5"  IsEnabled="{Binding IsEditMode}"/>
                             </StackPanel>
                         </Grid>
 
@@ -334,7 +334,7 @@
                             <!---Column 2-->
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="1" Grid.Row="0">
                                 <TextBlock Text="Name:" VerticalAlignment="Center"/>
-                                <TextBox Name="name" Margin="0 5"/>
+                                <TextBox Name="name" Height="25" FontSize="16" Margin="0 5" Text="asd"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="1" Grid.Row="1">
@@ -347,33 +347,33 @@
 
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="1" Grid.Row="2">
                                 <TextBlock Text="Breed:" VerticalAlignment="Center"/>
-                                <TextBox Name="breed" Margin="0 5"/>
+                                <TextBox Name="breed" Height="25" FontSize="16" Margin="0 5"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="1" Grid.Row="3">
                                 <TextBlock Text="Pond Id:" VerticalAlignment="Center"/>
-                                <TextBox Name="pondId" Margin="0 5" PreviewTextInput="NumberOnly"/>
+                                <TextBox Name="pondId" Margin="0 5" Height="25" FontSize="16" PreviewTextInput="NumberOnly"/>
                             </StackPanel>
                             
                             <!---Column 3-->
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="2" Grid.Row="0">
                                 <TextBlock Text="Age:" VerticalAlignment="Center" PreviewTextInput="NumberOnly"/>
-                                <TextBox Name="age" PreviewTextInput="NumberOnly" Margin="0 5"/>
+                                <TextBox Name="age" Height="25" FontSize="16" PreviewTextInput="NumberOnly" Margin="0 5"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="2" Grid.Row="1">
                                 <TextBlock Text="Weight:" VerticalAlignment="Center" />
-                                <TextBox Name="weight" PreviewTextInput="NumberOnly" Margin="0 5" />
+                                <TextBox Name="weight" Height="25" FontSize="16" PreviewTextInput="NumberOnly" Margin="0 5" />
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="2" Grid.Row="2">
                                 <TextBlock Text="Lenght:" VerticalAlignment="Center" />
-                                <TextBox Name="lenght" PreviewTextInput="NumberOnly" Margin="0 5"/>
+                                <TextBox Name="lenght" Height="25" FontSize="16" PreviewTextInput="NumberOnly" Margin="0 5"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="2" Grid.Row="3">
                                 <TextBlock Text="Physique:" VerticalAlignment="Center"/>
-                                <TextBox Name="physique" Margin="0 5"/>
+                                <TextBox Name="physique" Height="25" FontSize="16" Margin="0 5"/>
                             </StackPanel>
                         </Grid>
 
