@@ -1,0 +1,16 @@
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCare_DAOs\bin\Debug\net8.0\KoiCare_DAOs.deps.json
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCare_DAOs\bin\Debug\net8.0\KoiCare_DAOs.dll
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCare_DAOs\bin\Debug\net8.0\KoiCare_DAOs.pdb
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCare_DAOs\bin\Debug\net8.0\Business_Object.dll
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCare_DAOs\bin\Debug\net8.0\Business_Object.pdb
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCare_DAOs\obj\Debug\net8.0\KoiCare_DAOs.csproj.AssemblyReference.cache
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCare_DAOs\obj\Debug\net8.0\KoiCare_DAOs.GeneratedMSBuildEditorConfig.editorconfig
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCare_DAOs\obj\Debug\net8.0\KoiCare_DAOs.AssemblyInfoInputs.cache
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCare_DAOs\obj\Debug\net8.0\KoiCare_DAOs.AssemblyInfo.cs
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCare_DAOs\obj\Debug\net8.0\KoiCare_DAOs.csproj.CoreCompileInputs.cache
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCare_DAOs\obj\Debug\net8.0\KoiCare_DAOs.sourcelink.json
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCare_DAOs\obj\Debug\net8.0\KoiCare_.D48EB5E4.Up2Date
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCare_DAOs\obj\Debug\net8.0\KoiCare_DAOs.dll
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCare_DAOs\obj\Debug\net8.0\refint\KoiCare_DAOs.dll
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCare_DAOs\obj\Debug\net8.0\KoiCare_DAOs.pdb
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCare_DAOs\obj\Debug\net8.0\ref\KoiCare_DAOs.dll
