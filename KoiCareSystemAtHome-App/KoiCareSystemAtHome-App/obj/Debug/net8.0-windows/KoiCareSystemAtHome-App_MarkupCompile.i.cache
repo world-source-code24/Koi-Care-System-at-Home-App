@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCareSystemAtHome-App\App.xaml
-2-916616781
+4775387979
 
-72085808498
+9-1424142940
 286-1649900939
-KoiWindow.xaml;MainWindow.xaml;
+KoiWindow.xaml;LoginWindow.xaml;MainWindow.xaml;PondWindow.xaml;
 
 True
 

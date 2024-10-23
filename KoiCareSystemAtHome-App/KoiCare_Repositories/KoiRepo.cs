@@ -21,8 +21,8 @@ namespace KoiCare_Repositories
         public  KoisTbl GetKoiById(int id)
         => KoiDAO.Instance.GetKoiById(id);
 
-        public  List<KoisTbl> GetKois()
-            => KoiDAO.Instance.GetKois();
+        public  List<KoisTbl> GetKois(int accId)
+            => KoiDAO.Instance.GetKois(accId);
         public bool UpdateKoi(KoisTbl koi)
             => KoiDAO.Instance.UpdateKoi(koi);
     }

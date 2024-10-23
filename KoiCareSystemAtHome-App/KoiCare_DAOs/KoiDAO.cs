@@ -29,9 +29,9 @@ namespace KoiCare_DAOs
                 return instance;
             }
         }
-        public List<KoisTbl> GetKois()
+        public List<KoisTbl> GetKois(int accId)
         {
-            return _context.KoisTbls.ToList();
+            return _context.KoisTbls.Include(p => p.Pond).Where(p => p.Pond.AccId == accId).ToList();
         }
 
         public List<KoisTbl> GetAllKoiByPondId(int pondId)

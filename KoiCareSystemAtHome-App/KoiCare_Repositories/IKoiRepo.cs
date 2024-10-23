@@ -11,7 +11,7 @@ namespace KoiCare_Repositories
     {
         public KoisTbl GetKoiById(int id);
         public List<KoisTbl> GetAllKoiByPondId(int pondId);
-        public List<KoisTbl> GetKois();
+        public List<KoisTbl> GetKois(int accId);
         public bool CreateKoi(KoisTbl koi);
         public bool UpdateKoi(KoisTbl koi);
         public bool DeleteKoi(int id);

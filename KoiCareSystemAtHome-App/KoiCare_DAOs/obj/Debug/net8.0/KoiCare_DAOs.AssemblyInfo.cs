@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KoiCare_DAOs")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+814d86c1b0971d9d31884b7e76e1a97fdb0c7f5a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dee21697b9a1df88a3c652f36631f355846c59f8")]
 [assembly: System.Reflection.AssemblyProductAttribute("KoiCare_DAOs")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KoiCare_DAOs")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

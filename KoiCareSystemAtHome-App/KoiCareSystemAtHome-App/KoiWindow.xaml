@@ -73,7 +73,7 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource menuButton}">
+                            <Button Style="{StaticResource menuButton}" Click="PondMonitor_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Monitor" Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="Pond Monitor"/>
@@ -140,7 +140,7 @@
                 <Button x:Name="btn_add1" Style="{StaticResource addButton}" Click="Button_Click">
                     <StackPanel Orientation="Horizontal">
                         <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
-                        <TextBlock Text="Add New Member"/>
+                        <TextBlock Text="Add New Koi"/>
                     </StackPanel>
                 </Button>
 
@@ -149,8 +149,8 @@
 
                 <!--Tab buttons-->
                 <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0 10 0 0">
-                    <Button x:Name="btn_list" Style="{StaticResource tabButton}" Content="Koi List" BorderBrush="#db4b2e" Click="Button_Click"/>
-                    <Button x:Name="btn_detail" Style="{StaticResource tabButton}" Content="Koi Detail" Click="Button_Click"/>
+                    <Button x:Name="btn_list" Style="{StaticResource tabButton}" Content="Koi List" Width="100" BorderBrush="#db4b2e" Click="Button_Click"/>
+                    <Button x:Name="btn_detail" Style="{StaticResource tabButton}" Content="Koi Detail" Width="100" Click="Button_Click"/>
                     <Button x:Name="btn_add" Style="{StaticResource tabButton}" Content="Add New Koi" Width="100" Click="Button_Click"/>
                 </StackPanel>
 
@@ -253,9 +253,10 @@
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="1" Grid.Row="3">
-                                <TextBlock Text="Pond Id:" VerticalAlignment="Center"/>
-                                <TextBox Name="koiPondId" Height="25" FontSize="16" PreviewTextInput="NumberOnly" Margin="0 5" IsEnabled="{Binding IsEditMode}"/>
+                                <TextBlock Text="Pond:" VerticalAlignment="Center"/>
+                                <ComboBox Name="koiPondId" Height="25" FontSize="16" Margin="0 5" IsEnabled="{Binding IsEditMode}"/>
                             </StackPanel>
+
 
                             <!---Column 3-->
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="2" Grid.Row="0">
@@ -351,8 +352,8 @@
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="1" Grid.Row="3">
-                                <TextBlock Text="Pond Id:" VerticalAlignment="Center"/>
-                                <TextBox Name="pondId" Margin="0 5" Height="25" FontSize="16" PreviewTextInput="NumberOnly"/>
+                                <TextBlock Text="Pond:" VerticalAlignment="Center"/>
+                                <ComboBox Name="pondId" Margin="0 5" Height="25" FontSize="16" PreviewTextInput="NumberOnly"/>
                             </StackPanel>
                             
                             <!---Column 3-->

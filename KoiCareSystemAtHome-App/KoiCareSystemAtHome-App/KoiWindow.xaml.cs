@@ -29,6 +29,9 @@ namespace KoiCareSystemAtHome_App
         private readonly IKoiRepo koiRepo;
         private readonly KoisTbl kois;
         private bool _isEditMode;
+        private int accId;
+        private List<PondsTbl> ponds;
+        private readonly IPondRepository pondRepo;
         public bool IsEditMode
         {
             get => _isEditMode;
@@ -59,14 +62,26 @@ namespace KoiCareSystemAtHome_App
         public string FilterText { get; set; }
 
 
-        public KoiWindow()
+        
+        public KoiWindow(int accId)
         {
             InitializeComponent();
+            this.accId = accId;
             koiRepo = new KoiRepo();
+            pondRepo = new PondRepository();
+            ponds = pondRepo.GetPondsByUserId(accId);
             DataContext = this;
             IsEditMode = false;
             _koi = new ObservableCollection<KoisTbl>();
             _filteredMembers = CollectionViewSource.GetDefaultView(_koi);
+            LoadPond(pondId, ponds);
+            LoadPond(koiPondId, ponds);
+        }
+        private void LoadPond(ComboBox comboBox, List<PondsTbl> ponds)
+        {
+            comboBox.ItemsSource = ponds;
+            comboBox.DisplayMemberPath = "Name";
+            comboBox.SelectedValuePath = "PondId";
         }
 
         private void FilterMembers()
@@ -97,7 +112,7 @@ namespace KoiCareSystemAtHome_App
         private async void Window_Loaded()
         {
             // Fetch koi data asynchronously
-            var koisFromDb = koiRepo.GetKois(); // Assuming GetKoisAsync() is asynchronous
+            var koisFromDb = koiRepo.GetKois(accId); // Assuming GetKoisAsync() is asynchronous
 
             // Project the KoisTbl objects into an anonymous type containing only the desired properties
             var dataGridKois = koisFromDb.Select(k => new
@@ -237,6 +252,12 @@ namespace KoiCareSystemAtHome_App
             }
         }
 
+        private void PondMonitor_Click(object sender, RoutedEventArgs e)
+        {
+            PondWindow pondWindow = new PondWindow(accId);
+            pondWindow.Show();
+            this.Close();
+        }
         private void Home_Click(object sender, RoutedEventArgs e)
         {
 
@@ -357,7 +378,7 @@ namespace KoiCareSystemAtHome_App
             koiLenght.Text = koi.Length.ToString();
             koiWeight.Text = koi.Weight.ToString();
             koiSex.SelectedItem = koi.Sex ? koiSex.Items[0] : koiSex.Items[1];
-            koiPondId.Text = koi.PondId.ToString();
+            koiPondId.SelectedItem = koi.PondId;
             koiPhysique.Text = koi.Physique;
         }
         private KoisTbl updateKoiToDb()
@@ -371,7 +392,7 @@ namespace KoiCareSystemAtHome_App
                 Length = decimal.Parse(koiLenght.Text),
                 Weight = decimal.Parse(koiWeight.Text),
                 Sex = (koiSex.SelectedItem as ComboBoxItem).Content.ToString().Equals("Male") ? true : false,
-                PondId = int.Parse(koiPondId.Text),
+                PondId = int.Parse(koiPondId.SelectedValue.ToString()),
                 Physique = koiPhysique.Text
             };
         }
@@ -386,7 +407,7 @@ namespace KoiCareSystemAtHome_App
                 Length = decimal.Parse(lenght.Text),
                 Weight = decimal.Parse(weight.Text),
                 Sex = (sex.SelectedItem as ComboBoxItem).Content.ToString().Equals("Male") ? true : false,
-                PondId = int.Parse(pondId.Text),
+                PondId = int.Parse(pondId.SelectedValue.ToString()),
                 Physique = physique.Text
             };
         }
