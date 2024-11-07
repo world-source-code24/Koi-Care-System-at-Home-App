@@ -295,7 +295,7 @@ namespace KoiCareSystemAtHome_App {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/KoiCareSystemAtHome-App;component/koiwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/KoiCareSystemAtHome-App;V1.0.0.0;component/koiwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\KoiWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
