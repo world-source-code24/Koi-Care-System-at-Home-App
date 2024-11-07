@@ -1,0 +1,15 @@
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\Business_Object\bin\Debug\net8.0\Business_Object.deps.json
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\Business_Object\bin\Debug\net8.0\Business_Object.runtimeconfig.json
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\Business_Object\bin\Debug\net8.0\Business_Object.dll
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\Business_Object\bin\Debug\net8.0\Business_Object.pdb
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\Business_Object\obj\Debug\net8.0\Business_Object.csproj.AssemblyReference.cache
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\Business_Object\obj\Debug\net8.0\Business_Object.GeneratedMSBuildEditorConfig.editorconfig
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\Business_Object\obj\Debug\net8.0\Business_Object.AssemblyInfoInputs.cache
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\Business_Object\obj\Debug\net8.0\Business_Object.AssemblyInfo.cs
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\Business_Object\obj\Debug\net8.0\Business_Object.csproj.CoreCompileInputs.cache
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\Business_Object\obj\Debug\net8.0\Business_Object.sourcelink.json
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\Business_Object\obj\Debug\net8.0\Business_Object.dll
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\Business_Object\obj\Debug\net8.0\refint\Business_Object.dll
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\Business_Object\obj\Debug\net8.0\Business_Object.pdb
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\Business_Object\obj\Debug\net8.0\Business_Object.genruntimeconfig.cache
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\Business_Object\obj\Debug\net8.0\ref\Business_Object.dll

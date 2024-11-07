@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoiCareSystemAtHome-App", "KoiCareSystemAtHome-App\KoiCareSystemAtHome-App.csproj", "{0FBF1773-A0A1-4D3B-87B6-DDDAFEE71056}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KoiCareSystemAtHome-App", "KoiCareSystemAtHome-App\KoiCareSystemAtHome-App.csproj", "{0FBF1773-A0A1-4D3B-87B6-DDDAFEE71056}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business_Object", "Business_Object\Business_Object.csproj", "{2B1AE044-024B-4702-8634-6E2C0220F6D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoiCare_DAOs", "KoiCare_DAOs\KoiCare_DAOs.csproj", "{34C74D00-0803-4395-95F0-2D6DA822FB10}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoiCare_Repositories", "KoiCare_Repositories\KoiCare_Repositories.csproj", "{2F5B96A3-2C6F-42A8-8310-D0456B867CCD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoiCare_Services", "KoiCare_Services\KoiCare_Services.csproj", "{1D23C097-6619-46B3-82CF-FDB183DBA89F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,22 @@ Global
 		{0FBF1773-A0A1-4D3B-87B6-DDDAFEE71056}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FBF1773-A0A1-4D3B-87B6-DDDAFEE71056}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FBF1773-A0A1-4D3B-87B6-DDDAFEE71056}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B1AE044-024B-4702-8634-6E2C0220F6D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B1AE044-024B-4702-8634-6E2C0220F6D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B1AE044-024B-4702-8634-6E2C0220F6D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B1AE044-024B-4702-8634-6E2C0220F6D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34C74D00-0803-4395-95F0-2D6DA822FB10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34C74D00-0803-4395-95F0-2D6DA822FB10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34C74D00-0803-4395-95F0-2D6DA822FB10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34C74D00-0803-4395-95F0-2D6DA822FB10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F5B96A3-2C6F-42A8-8310-D0456B867CCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F5B96A3-2C6F-42A8-8310-D0456B867CCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F5B96A3-2C6F-42A8-8310-D0456B867CCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F5B96A3-2C6F-42A8-8310-D0456B867CCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D23C097-6619-46B3-82CF-FDB183DBA89F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D23C097-6619-46B3-82CF-FDB183DBA89F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D23C097-6619-46B3-82CF-FDB183DBA89F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D23C097-6619-46B3-82CF-FDB183DBA89F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
