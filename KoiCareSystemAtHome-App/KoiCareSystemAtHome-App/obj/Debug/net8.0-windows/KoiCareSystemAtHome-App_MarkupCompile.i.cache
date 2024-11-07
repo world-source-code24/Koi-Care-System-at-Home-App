@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCareSystemAtHome-App\obj\Debug\net8.0-windows\
+D:\Source\Repos\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCareSystemAtHome-App\obj\Debug\net8.0-windows\
 KoiCareSystemAtHome_App
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCareSystemAtHome-App\App.xaml
-2-916616781
+D:\Source\Repos\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCareSystemAtHome-App\App.xaml
+2212133806
 
-72085808498
-286-1649900939
-KoiWindow.xaml;MainWindow.xaml;
+8126340906
+286-484610103
+MainWindow.xaml;WaterParaWindow.xaml;
 
 True
 

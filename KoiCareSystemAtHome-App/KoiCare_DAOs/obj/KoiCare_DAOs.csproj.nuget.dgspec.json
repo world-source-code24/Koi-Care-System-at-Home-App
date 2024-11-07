@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\FPTU\\HK5_Fall24\\PRN212\\Project\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\KoiCare_DAOs\\KoiCare_DAOs.csproj": {}
+    "D:\\Source\\Repos\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\KoiCare_DAOs\\KoiCare_DAOs.csproj": {}
   },
   "projects": {
-    "D:\\FPTU\\HK5_Fall24\\PRN212\\Project\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\Business_Object\\Business_Object.csproj": {
+    "D:\\Source\\Repos\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\Business_Object\\Business_Object.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\FPTU\\HK5_Fall24\\PRN212\\Project\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\Business_Object\\Business_Object.csproj",
+        "projectUniqueName": "D:\\Source\\Repos\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\Business_Object\\Business_Object.csproj",
         "projectName": "Business_Object",
-        "projectPath": "D:\\FPTU\\HK5_Fall24\\PRN212\\Project\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\Business_Object\\Business_Object.csproj",
-        "packagesPath": "C:\\Users\\Anh Minh\\.nuget\\packages\\",
-        "outputPath": "D:\\FPTU\\HK5_Fall24\\PRN212\\Project\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\Business_Object\\obj\\",
+        "projectPath": "D:\\Source\\Repos\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\Business_Object\\Business_Object.csproj",
+        "packagesPath": "C:\\Users\\huusa\\.nuget\\packages\\",
+        "outputPath": "D:\\Source\\Repos\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\Business_Object\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Anh Minh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\huusa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -87,17 +87,17 @@
         }
       }
     },
-    "D:\\FPTU\\HK5_Fall24\\PRN212\\Project\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\KoiCare_DAOs\\KoiCare_DAOs.csproj": {
+    "D:\\Source\\Repos\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\KoiCare_DAOs\\KoiCare_DAOs.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\FPTU\\HK5_Fall24\\PRN212\\Project\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\KoiCare_DAOs\\KoiCare_DAOs.csproj",
+        "projectUniqueName": "D:\\Source\\Repos\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\KoiCare_DAOs\\KoiCare_DAOs.csproj",
         "projectName": "KoiCare_DAOs",
-        "projectPath": "D:\\FPTU\\HK5_Fall24\\PRN212\\Project\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\KoiCare_DAOs\\KoiCare_DAOs.csproj",
-        "packagesPath": "C:\\Users\\Anh Minh\\.nuget\\packages\\",
-        "outputPath": "D:\\FPTU\\HK5_Fall24\\PRN212\\Project\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\KoiCare_DAOs\\obj\\",
+        "projectPath": "D:\\Source\\Repos\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\KoiCare_DAOs\\KoiCare_DAOs.csproj",
+        "packagesPath": "C:\\Users\\huusa\\.nuget\\packages\\",
+        "outputPath": "D:\\Source\\Repos\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\KoiCare_DAOs\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Anh Minh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\huusa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -112,8 +112,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\FPTU\\HK5_Fall24\\PRN212\\Project\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\Business_Object\\Business_Object.csproj": {
-                "projectPath": "D:\\FPTU\\HK5_Fall24\\PRN212\\Project\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\Business_Object\\Business_Object.csproj"
+              "D:\\Source\\Repos\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\Business_Object\\Business_Object.csproj": {
+                "projectPath": "D:\\Source\\Repos\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\Business_Object\\Business_Object.csproj"
               }
             }
           }

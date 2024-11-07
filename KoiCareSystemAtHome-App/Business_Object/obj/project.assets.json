@@ -4342,19 +4342,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Anh Minh\\.nuget\\packages\\": {}
+    "C:\\Users\\huusa\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\FPTU\\HK5_Fall24\\PRN212\\Project\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\Business_Object\\Business_Object.csproj",
+      "projectUniqueName": "D:\\Source\\Repos\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\Business_Object\\Business_Object.csproj",
       "projectName": "Business_Object",
-      "projectPath": "D:\\FPTU\\HK5_Fall24\\PRN212\\Project\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\Business_Object\\Business_Object.csproj",
-      "packagesPath": "C:\\Users\\Anh Minh\\.nuget\\packages\\",
-      "outputPath": "D:\\FPTU\\HK5_Fall24\\PRN212\\Project\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\Business_Object\\obj\\",
+      "projectPath": "D:\\Source\\Repos\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\Business_Object\\Business_Object.csproj",
+      "packagesPath": "C:\\Users\\huusa\\.nuget\\packages\\",
+      "outputPath": "D:\\Source\\Repos\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\Business_Object\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Anh Minh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\huusa\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
