@@ -133,6 +133,10 @@
                     <Icon:PackIconMaterial Kind="Bell"/>
                 </Button>
 
+                <Button Style="{StaticResource topButton}" Margin="0 0 85 0" Click="PurchasePage_Click">
+                    <Icon:PackIconMaterial Kind="Store" />
+                </Button>
+
                 <!--Page Title-->
                 <TextBlock x:Name="txtHeader" Text="Koi Management" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0" Foreground="#121518" HorizontalAlignment="Left"/>
 

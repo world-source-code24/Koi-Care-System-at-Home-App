@@ -353,7 +353,7 @@ namespace KoiCareSystemAtHome_App
             koiName.Text = koi.Name;
             koiAge.Text = koi.Age.ToString();
             koiBreed.Text = koi.Breed;
-            //if (koi.Image != null) koiImg.Source = new BitmapImage(new Uri(koi.Image));
+            if (koi.Image != null) koiImg.Source = new BitmapImage(new Uri(koi.Image));
             koiLenght.Text = koi.Length.ToString();
             koiWeight.Text = koi.Weight.ToString();
             koiSex.SelectedItem = koi.Sex ? koiSex.Items[0] : koiSex.Items[1];
@@ -365,6 +365,7 @@ namespace KoiCareSystemAtHome_App
             return new KoisTbl
             {
                 KoiId = _koiId,
+                
                 Name = koiName.Text,
                 Age = int.Parse(koiAge.Text),
                 Breed = koiBreed.Text,
@@ -402,6 +403,16 @@ namespace KoiCareSystemAtHome_App
                 pondId.Text = string.Empty;      // Clear TextBox
                 physique.Text = string.Empty;    // Clear TextBox
                                                       // koiImg.Source = null;            // Uncomment if you want to clear the 
+        }
+
+
+        //Điều hướng qua trang product để mua hàng
+        private void PurchasePage_Click(object sender, RoutedEventArgs e)
+        {
+            ProductWindow productWindow = new ProductWindow();
+            productWindow.Show();
+
+            this.Close();
         }
     }
        

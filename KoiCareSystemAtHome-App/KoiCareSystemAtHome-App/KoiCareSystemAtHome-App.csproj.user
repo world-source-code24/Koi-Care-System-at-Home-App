@@ -7,11 +7,20 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="CartWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="KoiWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ProductWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="CartWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="KoiWindow.xaml">
       <SubType>Designer</SubType>
     </Page>

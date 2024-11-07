@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\FPTU\\HK5_Fall24\\PRN212\\Project\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\Business_Object\\Business_Object.csproj": {}
+    "D:\\SE1859-FALL2024\\PRN212\\KoiCareSystemAtHome\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\Business_Object\\Business_Object.csproj": {}
   },
   "projects": {
-    "D:\\FPTU\\HK5_Fall24\\PRN212\\Project\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\Business_Object\\Business_Object.csproj": {
+    "D:\\SE1859-FALL2024\\PRN212\\KoiCareSystemAtHome\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\Business_Object\\Business_Object.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\FPTU\\HK5_Fall24\\PRN212\\Project\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\Business_Object\\Business_Object.csproj",
+        "projectUniqueName": "D:\\SE1859-FALL2024\\PRN212\\KoiCareSystemAtHome\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\Business_Object\\Business_Object.csproj",
         "projectName": "Business_Object",
-        "projectPath": "D:\\FPTU\\HK5_Fall24\\PRN212\\Project\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\Business_Object\\Business_Object.csproj",
-        "packagesPath": "C:\\Users\\Anh Minh\\.nuget\\packages\\",
-        "outputPath": "D:\\FPTU\\HK5_Fall24\\PRN212\\Project\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\Business_Object\\obj\\",
+        "projectPath": "D:\\SE1859-FALL2024\\PRN212\\KoiCareSystemAtHome\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\Business_Object\\Business_Object.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "D:\\SE1859-FALL2024\\PRN212\\KoiCareSystemAtHome\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\Business_Object\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Anh Minh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
