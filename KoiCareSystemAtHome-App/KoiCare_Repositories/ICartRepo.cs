@@ -16,5 +16,6 @@ namespace KoiCare_Repositories
         public bool RemoveFromCart(int accId, int productId);
 
 
+        public bool ClearCart(int accId);
     }
 }

@@ -2,6 +2,7 @@
 using KoiCare_Repositories;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,7 @@ namespace KoiCareSystemAtHome_App
     /// <summary>
     /// Interaction logic for CartWindow.xaml
     /// </summary>
-    public partial class CartWindow : Window
+    public partial class CartWindow : Window, INotifyPropertyChanged
     {
 
         private KoicareathomeContext _context;
@@ -31,6 +32,8 @@ namespace KoiCareSystemAtHome_App
         public int Quantity { get; set; }
         public decimal Price { get; set; }
         public decimal Total => Quantity * Price;
+
+        public decimal TotalPrice { get; set; } = 0;
 
 
 
@@ -86,7 +89,7 @@ namespace KoiCareSystemAtHome_App
 
 
 
-        private async void Window_Loaded()
+        private void LoadCartItems()
         {
 
             var cartsFromDb = cartRepo.GetCartItems(_currentAccId);
@@ -94,6 +97,8 @@ namespace KoiCareSystemAtHome_App
             if (cartsFromDb == null)
             {
                 MessageBox.Show("No cart items found.");
+                TotalPrice = 0;
+                NotifyPropertyChanged(nameof(TotalPrice));
                 return;
             }
 
@@ -108,16 +113,16 @@ namespace KoiCareSystemAtHome_App
             }).ToList();
 
 
-            
-
-            // Set the filtered members to the DataGrid
+           
             CartDataGrid.ItemsSource = dataGridCarts;
+            TotalPrice = dataGridCarts.Sum(c => c.Total);
+            NotifyPropertyChanged(nameof(TotalPrice));
         }
 
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Window_Loaded();
+            LoadCartItems();
         }
 
 
@@ -141,7 +146,7 @@ namespace KoiCareSystemAtHome_App
                     int productId = (int)clickedButton.CommandParameter;
                     if (cartRepo.RemoveFromCart(accId, productId))
                     {
-                        Window_Loaded();
+                        LoadCartItems();
                     }
                     else
                     {
@@ -152,14 +157,84 @@ namespace KoiCareSystemAtHome_App
         }
 
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
+        
 
+        private void btnAddYourCart_Click(object sender, RoutedEventArgs e)
+        {
+            ProductWindow productWindow = new ProductWindow();
+            productWindow.Show();
+            this.Close();
         }
 
-        private void FilterTextChanged(object sender, TextChangedEventArgs e)
-        {
 
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void NotifyPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+
+        private void btnCheckout_Click(object sender, RoutedEventArgs e)
+        {
+            var cartItems = cartRepo.GetCartItems(_currentAccId);
+
+           
+            if (cartItems == null || cartItems.Count == 0)
+            {
+                MessageBox.Show("Your cart is empty. Please add items to your cart before proceeding.", "Empty Cart", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            
+            decimal totalAmount = TotalPrice;
+
+            
+            var confirmationResult = MessageBox.Show(
+                $"Your total amount is {totalAmount:C}. Do you want to proceed with the checkout?",
+                "Confirm Checkout",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question
+            );
+
+            if (confirmationResult == MessageBoxResult.Yes)
+            {
+                bool paymentSuccess = ProcessPayment(totalAmount);
+
+                if (paymentSuccess)
+                {
+
+                    cartRepo.ClearCart(_currentAccId);
+                    LoadCartItems();
+
+                    MessageBox.Show("Payment successful! Thank you for your purchase.", "Payment Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Payment failed. Please try again later.", "Payment Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+
+            }
+        }
+
+
+        private bool ProcessPayment(decimal totalAmount)
+        {
+            try
+            {
+                if (totalAmount <= 0)
+                {
+                    return false; 
+                }
+               
+                return true; 
+            }
+            catch (Exception ex)
+            {
+                
+                Console.WriteLine($"Payment processing error: {ex.Message}");
+                return false; 
+            }
         }
 
 

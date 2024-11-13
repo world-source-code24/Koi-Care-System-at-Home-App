@@ -1,5 +1,6 @@
 ﻿using Business_Object.Models;
 using KoiCare_DAOs;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,8 @@ namespace KoiCare_Repositories
         public bool RemoveFromCart(int accId, int productId) => CartDAO.Instance.RemoveFromCart(accId, productId);
 
 
+        public bool ClearCart(int accId) => CartDAO.Instance.ClearCart(accId);
         
+
     }
 }
