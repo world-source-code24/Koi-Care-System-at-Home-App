@@ -10,8 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="img\logo.png.jpg" />
-    <None Remove="loginBackground.jpg" />
+    <None Remove="img\logo.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,13 +19,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\KoiCare_Repositories\KoiCare_Repositories.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="img\logo.png.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="loginBackground.jpg" />
   </ItemGroup>
 
 </Project>

@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="ProfileWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="KoiWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -16,18 +19,24 @@
     <Compile Update="PondWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="WaterParaWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="ProfileWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="KoiWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="LoginWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="MainWindow.xaml">
+    <Page Update="PondWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="PondWindow.xaml">
+    <Page Update="WaterParaWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

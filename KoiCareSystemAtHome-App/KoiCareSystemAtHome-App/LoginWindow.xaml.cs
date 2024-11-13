@@ -43,7 +43,9 @@ namespace KoiCareSystemAtHome_App
                         string role = account.Role;
                         if (role.Equals("guest", StringComparison.OrdinalIgnoreCase) || role.Equals("member", StringComparison.OrdinalIgnoreCase))
                         {
-
+                            ProfileWindow profileWindow = new ProfileWindow(account.AccId);
+                            profileWindow.Show();
+                            Close();
                         }
                         else if (role.Equals("admin", StringComparison.OrdinalIgnoreCase))
                         {

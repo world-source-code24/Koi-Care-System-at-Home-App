@@ -18,16 +18,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Media.Media3D;
 using System.Windows.Shapes;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace KoiCareSystemAtHome_App
 {
     /// <summary>
     /// Interaction logic for PondWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, INotifyPropertyChanged
+    public partial class WaterParaWindow : Window, INotifyPropertyChanged
     {
-        private readonly IPondRepository pondRepo;
-        private readonly PondsTbl ponds;
+        private readonly IWaterParameterRepo waterRepo;
+        private readonly WaterParametersTbl waters;
         private int accId;
         private bool _isEditMode;
         public bool IsEditMode
@@ -42,33 +43,33 @@ namespace KoiCareSystemAtHome_App
                 }
             }
         }
-        private int _pondId;
-        public int PondId
+        private int _waterId;
+        public int WaterId
         {
-            get => _pondId;
+            get => _waterId;
             set
             {
-                if (_pondId != value)
+                if (_waterId != value)
                 {
-                    _pondId = value;
+                    _waterId = value;
                 }
             }
         }
-        private ObservableCollection<PondsTbl> _pond;
+        private ObservableCollection<WaterParametersTbl> _water;
         private ICollectionView _filteredMembers;
 
         public string FilterText { get; set; }
 
 
-        public PondWindow(int accId)
+        public WaterParaWindow(int accId)
         {
             InitializeComponent();
-            pondRepo = new PondRepository();
+            waterRepo = new WaterParameterRepo();
             DataContext = this;
             IsEditMode = false;
             this.accId = accId;
-            _pond = new ObservableCollection<PondsTbl>();
-            _filteredMembers = CollectionViewSource.GetDefaultView(_pond);
+            _water = new ObservableCollection<WaterParametersTbl>();
+            _filteredMembers = CollectionViewSource.GetDefaultView(_water);
         }
 
         private void FilterMembers()
@@ -87,7 +88,7 @@ namespace KoiCareSystemAtHome_App
                 // Clear filter and show all items
                 _filteredMembers.Filter = null;
             }
-            KoiDataGrid.ItemsSource = _filteredMembers;
+            WaterDataGrid.ItemsSource = _filteredMembers;
         }
 
         private void FilterTextChanged(object sender, TextChangedEventArgs e)
@@ -99,27 +100,31 @@ namespace KoiCareSystemAtHome_App
         private async void Window_Loaded()
         {
             // Fetch koi data asynchronously
-            var pondsFromDB = pondRepo.GetPondsByUserId(accId);
+            var watersFromDB = waterRepo.GetParametersByUserId(accId);
             // Project the KoisTbl objects into an anonymous type containing only the desired properties
-            var dataGridKois = pondsFromDB.Select(k => new
+            var dataGridKois = watersFromDB.Select(w => new
             {
-                k.PondId,
-                k.Name,
-                k.Depth,
-                k.Volume,
-                k.DrainCount,
-                k.PumpCapacity
+                w.ParameterId,
+                w.Salt,
+                w.Temperature,
+                w.Po4Level,
+                w.No3Level,
+                w.O2Level,
+                w.No2Level,
+                w.Date,
+                w.TotalChlorines,
+                w.PhLevel,
             }).ToList();
 
             // Populate the _koi collection with the fetched data
-            _pond.Clear();  // Clear the existing collection before adding new data
-            foreach (var koi in pondsFromDB)
+            _water.Clear();  // Clear the existing collection before adding new data
+            foreach (var koi in watersFromDB)
             {
-                _pond.Add(koi); // Add each fetched koi to the ObservableCollection
+                _water.Add(koi); // Add each fetched koi to the ObservableCollection
             }
 
             // Set the filtered members to the DataGrid
-            KoiDataGrid.ItemsSource = dataGridKois;
+            WaterDataGrid.ItemsSource = dataGridKois;
         }
 
 
@@ -157,7 +162,7 @@ namespace KoiCareSystemAtHome_App
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_ClickPond(object sender, RoutedEventArgs e)
         {
             Button clickedButton = sender as Button;
             if (clickedButton == btn_add || clickedButton == btn_add1)
@@ -183,10 +188,10 @@ namespace KoiCareSystemAtHome_App
                 // Access the DataContext of the button (which should be the Koi object)
                 int pondId = (int)clickedButton.CommandParameter;
 
-                var pond = pondRepo.GetPondById(pondId);
+                var pond = waterRepo.GetParameterById(pondId);
                 if (pond != null)
                 {
-                    updateKoiToWindow(pond);
+                    updateWaterToWindow(pond);
                     ChangUI(2);
                 }
                 else
@@ -204,9 +209,9 @@ namespace KoiCareSystemAtHome_App
             if (clickedButton != null)
             {
                 // Access the DataContext of the button (which should be the Koi object)
-                int pondId = (int)clickedButton.CommandParameter;
+                int waterId = (int)clickedButton.CommandParameter;
 
-                if (pondRepo.DeletePond(pondId))
+                if (waterRepo.DeleteParameter(waterId))
                 {
                     Window_Loaded();
                     ChangUI(1);
@@ -259,18 +264,17 @@ namespace KoiCareSystemAtHome_App
 
         private void AddKoi_Click(object sender, RoutedEventArgs e)
         {
-            var newPond = saveKoiToDb();
-            if (pondRepo.CreatePond(newPond))
+            var newWater = saveWaterToDb();
+            if (waterRepo.AddParameter(newWater))
             {
                 CleanAddForm();
                 Window_Loaded();
                 ChangUI(1);
             }
         }
-        private void CancelAddKoi_Click(Object sender, RoutedEventArgs e)
+        private void CancelAddKoi_Click()
         {
             CleanAddForm();
-            KoiImage.Source = null;
         }
 
         private void NumberOnly(object sender, TextCompositionEventArgs e)
@@ -287,10 +291,10 @@ namespace KoiCareSystemAtHome_App
                 btnEdit.Text = "Edit";
                 iconEdit.Kind = PackIconMaterialKind.ContentSave;
                 //Logic update koi
-                var updateKoi = updateKoiToDb();
-                if (pondRepo.UpdatePond(updateKoi))
+                var updateWater = updateWaterToDb();
+                if (waterRepo.UpdateParameter(updateWater))
                 {
-                    updateKoiToWindow(updateKoi);
+                    updateWaterToWindow(updateWater);
                     Window_Loaded();
                 }
             }
@@ -308,7 +312,7 @@ namespace KoiCareSystemAtHome_App
             IsEditMode = false;
             btnEdit.Text = "Edit";
             iconEdit.Kind = PackIconMaterialKind.ContentSave;
-            updateKoiToWindow(pondRepo.GetPondById(_pondId));
+            updateWaterToWindow(waterRepo.GetParameterById(_waterId));
         }
 
 
@@ -337,18 +341,18 @@ namespace KoiCareSystemAtHome_App
                     ChangeUIWhenClickButton(btn_list, btn_detail, btn_add);
                     KoiDetailGrid.Visibility = Visibility.Collapsed;
                     NewKoiEntryGrid.Visibility = Visibility.Collapsed;
-                    KoiDataGrid.Visibility = Visibility.Visible;
+                    WaterDataGrid.Visibility = Visibility.Visible;
                     break;
                 case 2:
                     ChangeUIWhenClickButton(btn_detail, btn_add, btn_list);
-                    KoiDataGrid.Visibility = Visibility.Collapsed;
+                    WaterDataGrid.Visibility = Visibility.Collapsed;
                     NewKoiEntryGrid.Visibility = Visibility.Collapsed;
                     KoiDetailGrid.Visibility = Visibility.Visible;
                     break;
                 case 3:
                     ChangeUIWhenClickButton(btn_add, btn_detail, btn_list);
                     KoiDetailGrid.Visibility = Visibility.Collapsed;
-                    KoiDataGrid.Visibility = Visibility.Collapsed;
+                    WaterDataGrid.Visibility = Visibility.Collapsed;
                     NewKoiEntryGrid.Visibility = Visibility.Visible;
                     break;
 
@@ -357,50 +361,68 @@ namespace KoiCareSystemAtHome_App
 
         // End Change UI section
         // Addition Function
-        private void updateKoiToWindow(PondsTbl pond)
+        private void updateWaterToWindow(WaterParametersTbl water)
         {
-            _pondId = pond.PondId;
-            pondName.Text = pond.Name;
-            pondDepth.Text = pond.Depth.ToString();
-            pondDrainCount.Text = pond.DrainCount.ToString();
-            pondVolumn.Text = pond.Volume.ToString();
-            pondPumpCapacity.Text = pond.PumpCapacity.ToString();
+            _waterId = water.ParameterId;
+            txtTemperature.Text = water.Temperature.ToString();
+            txtSalt.Text = water.Salt.ToString();
+            txtPHlevel.Text = water.PhLevel.ToString();
+            txtO2level.Text = water.O2Level.ToString();
+            txtNO2level.Text = water.No2Level.ToString();
+            txtNO3level.Text = water.No3Level.ToString();
+            txtPO4level.Text = water.Po4Level.ToString();
+            txtTotalChlorines.Text = water.TotalChlorines.ToString();
+            txtDate.SelectedDate = water.Date;
 
         }
-        private PondsTbl updateKoiToDb()
+        private WaterParametersTbl updateWaterToDb()
         {
-            return new PondsTbl
+            int pondCurrent = waterRepo.GetParameterById(_waterId).PondId;
+            return new WaterParametersTbl
             {
-                PondId = _pondId,
-                Name = pondName.Text,
-                Depth = decimal.Parse(pondDepth.Text),
-                Volume = int.Parse(pondVolumn.Text),
-                DrainCount = int.Parse(pondDrainCount.Text),
-                PumpCapacity = int.Parse(pondPumpCapacity.Text),
-                AccId = accId
+                ParameterId = _waterId,
+                Temperature = decimal.Parse(txtTemperature.Text),
+                Salt = decimal.Parse(txtSalt.Text),
+                PhLevel = decimal.Parse(txtPHlevel.Text),
+                O2Level = decimal.Parse(txtO2level.Text),
+                No2Level = decimal.Parse(txtNO2level.Text),
+                No3Level = decimal.Parse(txtNO3level.Text),
+                Po4Level = decimal.Parse(txtPO4level.Text),
+                TotalChlorines = decimal.Parse(txtTotalChlorines.Text),
+                Date = txtDate.SelectedDate,
+                PondId = pondCurrent,
             };
         }
 
-        private PondsTbl saveKoiToDb()
+        private WaterParametersTbl saveWaterToDb()
         {
-            return new PondsTbl
+            int pondCurrent = waterRepo.GetParameterById(_waterId).PondId;
+            return new WaterParametersTbl
             {
-                Name = name.Text,
-                Depth = decimal.Parse(depth.Text),
-                DrainCount = int.Parse(drainCount.Text),
-                Volume = int.Parse(volumn.Text),
-                PumpCapacity = int.Parse(pumpCapacity.Text),
-                AccId = accId
+                Temperature = decimal.Parse(txtTemperature.Text),
+                Salt = decimal.Parse(txtSalt.Text),
+                PhLevel = decimal.Parse(txtPHlevel.Text),
+                O2Level = decimal.Parse(txtO2level.Text),
+                No2Level = decimal.Parse(txtNO2level.Text),
+                No3Level = decimal.Parse(txtNO3level.Text),
+                Po4Level = decimal.Parse(txtPO4level.Text),
+                TotalChlorines = decimal.Parse(txtTotalChlorines.Text),
+                Date = txtDate.SelectedDate,
+                PondId = pondCurrent,
             };
         }
 
         private void CleanAddForm()
         {
-            name.Text = string.Empty;        // Clear TextBox
-            volumn.Text = string.Empty;         // Clear TextBox
-            depth.Text = string.Empty;       // Clear TextBox
-            drainCount.Text = string.Empty;      // Clear TextBox
-            pumpCapacity.Text = string.Empty;      // Clear TextBox
+            txtTemperature.Text = string.Empty;
+            txtSalt.Text = string.Empty;
+            txtPHlevel.Text = string.Empty;
+            txtO2level.Text = string.Empty;
+            txtNO2level.Text = string.Empty;
+            txtNO3level.Text = string.Empty;
+            txtPO4level.Text = string.Empty;
+            txtTotalChlorines.Text = string.Empty;
+            txtDate.SelectedDate = null;
         }
     }
 

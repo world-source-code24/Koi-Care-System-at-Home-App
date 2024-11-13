@@ -10,5 +10,6 @@ namespace KoiCare_Repositories
     public interface IAccountRepo
     {
         public List<AccountTbl> GetAccounts();
+        public AccountTbl GetAccount(int id);
     }
 }

@@ -119,7 +119,7 @@ namespace KoiCareSystemAtHome_App
             }
 
             // Set the filtered members to the DataGrid
-            KoiDataGrid.ItemsSource = dataGridKois;
+            PondDataGrid.ItemsSource = dataGridKois;
         }
 
 
@@ -337,18 +337,18 @@ namespace KoiCareSystemAtHome_App
                     ChangeUIWhenClickButton(btn_list, btn_detail, btn_add);
                     KoiDetailGrid.Visibility = Visibility.Collapsed;
                     NewKoiEntryGrid.Visibility = Visibility.Collapsed;
-                    KoiDataGrid.Visibility = Visibility.Visible;
+                    PondDataGrid.Visibility = Visibility.Visible;
                     break;
                 case 2:
                     ChangeUIWhenClickButton(btn_detail, btn_add, btn_list);
-                    KoiDataGrid.Visibility = Visibility.Collapsed;
+                    PondDataGrid.Visibility = Visibility.Collapsed;
                     NewKoiEntryGrid.Visibility = Visibility.Collapsed;
                     KoiDetailGrid.Visibility = Visibility.Visible;
                     break;
                 case 3:
                     ChangeUIWhenClickButton(btn_add, btn_detail, btn_list);
                     KoiDetailGrid.Visibility = Visibility.Collapsed;
-                    KoiDataGrid.Visibility = Visibility.Collapsed;
+                    PondDataGrid.Visibility = Visibility.Collapsed;
                     NewKoiEntryGrid.Visibility = Visibility.Visible;
                     break;
 

@@ -10,6 +10,11 @@ namespace KoiCare_Repositories
 {
     public class AccountRepo : IAccountRepo
     {
+        public AccountTbl GetAccount(int id)
+        {
+            return AccountDAO.Instance.GetAccount(id);
+        }
+
         public List<AccountTbl> GetAccounts()
         {
             return AccountDAO.Instance.GetAccounts();

@@ -32,5 +32,10 @@ namespace KoiCare_DAOs
         {
             return appContext.AccountTbls.ToList();
         }
+
+        public AccountTbl GetAccount(int id)
+        {
+            return appContext.AccountTbls.FirstOrDefault(a => a.AccId.Equals(id));
+        }
     }
 }
