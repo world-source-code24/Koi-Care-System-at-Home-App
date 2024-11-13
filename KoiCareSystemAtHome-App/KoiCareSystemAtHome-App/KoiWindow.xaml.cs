@@ -1,5 +1,6 @@
 ﻿using Business_Object.Models;
 using KoiCare_Repositories;
+using KoiCare_Repositories.IRepositories;
 using MahApps.Metro.IconPacks;
 using System;
 using System.Collections.Generic;
@@ -252,21 +253,7 @@ namespace KoiCareSystemAtHome_App
             }
         }
 
-        private void PondMonitor_Click(object sender, RoutedEventArgs e)
-        {
-            PondWindow pondWindow = new PondWindow(accId);
-            pondWindow.Show();
-            this.Close();
-        }
-        private void Home_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Logout_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
+        
 
         private void AddKoi_Click(object sender, RoutedEventArgs e)
         {
@@ -423,6 +410,46 @@ namespace KoiCareSystemAtHome_App
                 pondId.Text = string.Empty;      // Clear TextBox
                 physique.Text = string.Empty;    // Clear TextBox
                                                       // koiImg.Source = null;            // Uncomment if you want to clear the 
+        }
+
+        private void Profile_Click(object sender, RoutedEventArgs e)
+        {
+            UserProfileWindow userProfileWindow = new UserProfileWindow(accId);
+            userProfileWindow.Show();
+            this.Close();
+        }
+
+        private void PondMonitor_Click(object sender, RoutedEventArgs e)
+        {
+            PondWindow pondWindow = new PondWindow(accId);
+            pondWindow.Show();
+            this.Close();
+        }
+
+        private void Cart_Click(object sender, RoutedEventArgs e)
+        {
+            CartWindow cartWindow = new CartWindow(accId);
+            cartWindow.Show();
+            this.Close();
+        }
+        private void KoiManagement_Click(object sender, RoutedEventArgs e)
+        {
+            KoiWindow koiWindow = new KoiWindow(accId);
+            koiWindow.Show();
+            this.Close();
+        }
+
+
+        private void Home_Click(object sender, RoutedEventArgs e)
+        {
+            HomeWindow homeWindow = new HomeWindow(accId);
+            homeWindow.Show();
+            this.Close();
+        }
+
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
        

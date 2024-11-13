@@ -127,3 +127,9 @@ D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHom
 D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCareSystemAtHome-App\obj\Debug\net8.0-windows\PondWindow.g.cs
 D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCareSystemAtHome-App\obj\Debug\net8.0-windows\LoginWindow.baml
 D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCareSystemAtHome-App\obj\Debug\net8.0-windows\PondWindow.baml
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCareSystemAtHome-App\obj\Debug\net8.0-windows\CartWindow.g.cs
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCareSystemAtHome-App\obj\Debug\net8.0-windows\UserProfileWindow.g.cs
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCareSystemAtHome-App\obj\Debug\net8.0-windows\CartWindow.baml
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCareSystemAtHome-App\obj\Debug\net8.0-windows\UserProfileWindow.baml
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCareSystemAtHome-App\obj\Debug\net8.0-windows\HomeWindow.g.cs
+D:\FPTU\HK5_Fall24\PRN212\Project\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCareSystemAtHome-App\obj\Debug\net8.0-windows\HomeWindow.baml

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KoiCare_Repositories
+namespace KoiCare_Repositories.IRepositories
 {
     public interface IPondRepository
     {

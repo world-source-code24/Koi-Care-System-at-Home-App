@@ -57,31 +57,30 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource menuButton}">
+                            <Button Style="{StaticResource menuButton}" Click="Profile_Click"  >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Account" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="Profie"/>
+                                    <TextBlock Text="Profile"/>
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource menuButton}" Click="KoiManagement_Click">
+                            <Button Style="{StaticResource menuButton}"  Click="KoiManagement_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="ListBox" Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="Koi Management"/>
                                 </StackPanel>
                             </Button>
-
-                            <Button Style="{StaticResource menuButton}" Background="#db4b2e" Foreground="White">
+                            <Button Style="{StaticResource menuButton}" Background="#db4b2e" Foreground="White" Click="PondMonitor_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Monitor" Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="Pond Monitor"/>
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource menuButton}">
+                            <Button Style="{StaticResource menuButton}" Click="Cart_Click">
                                 <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="ChartBar" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="Statistics"/>
+                                    <Icon:PackIconMaterial Kind="Cart" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Text="Cart"/>
                                 </StackPanel>
                             </Button>
 

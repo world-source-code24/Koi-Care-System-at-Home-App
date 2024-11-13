@@ -10,6 +10,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="img\ca.jpg" />
+    <None Remove="img\loginBackground.jpg" />
     <None Remove="img\logo.png.jpg" />
   </ItemGroup>
 
@@ -22,6 +24,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="img\ca.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\loginBackground.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="img\logo.png.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

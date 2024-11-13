@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KoiCareSystemAtHome-App")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fc8e557ff63eeed2562802c9aae310280b4f0f79")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3c85787fbd9afc9b1579e8e9bd9e81971a40e92a")]
 [assembly: System.Reflection.AssemblyProductAttribute("KoiCareSystemAtHome-App")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KoiCareSystemAtHome-App")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
