@@ -50,7 +50,7 @@
 
                         <!--Menu Buttons-->
                         <StackPanel DockPanel.Dock="Top" >
-                            <Button Style="{StaticResource menuButton}" Click="Home_Click">
+                            <Button Style="{StaticResource menuButton}" Background="#db4b2e" Foreground="White" Click="Home_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="HomeVariant" Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="Home"/>
@@ -64,7 +64,7 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource menuButton}"  Click="KoiManagement_Click">
+                            <Button Style="{StaticResource menuButton}" Click="KoiManagement_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="ListBox" Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="Koi Management"/>
@@ -76,8 +76,20 @@
                                     <TextBlock Text="Pond Monitor"/>
                                 </StackPanel>
                             </Button>
+                            <Button Style="{StaticResource menuButton}" Click="Water_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="Water" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Text="Water Parameter"/>
+                                </StackPanel>
+                            </Button>
+                            <Button Style="{StaticResource menuButton}" Click="Product_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="Package" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Text="Products"/>
+                                </StackPanel>
+                            </Button>
 
-                            <Button Style="{StaticResource menuButton}" Background="#db4b2e" Foreground="White" Click="Cart_Click">
+                            <Button Style="{StaticResource menuButton}" Click="Cart_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Cart" Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="Cart"/>
@@ -138,11 +150,11 @@
                 <!--Page Title-->
                 <TextBlock x:Name="txtHeader" Text="Your Cart" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0" Foreground="#121518" HorizontalAlignment="Left"/>
 
-                <!--Add Button-->
-                <Button x:Name="btn_add1" Style="{StaticResource addButton}" HorizontalAlignment="Left" Margin="680,24,0,4" Grid.Row="1">
+                <!--Checkout Button-->
+                <Button x:Name="btnCheckout" Style="{StaticResource addButton}" Click="btnCheckout_Click">
                     <StackPanel Orientation="Horizontal">
-                        <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
-                        <TextBlock Text="Add Your Cart"/>
+                        <Icon:PackIconMaterial Kind="CreditCardOutline" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
+                        <TextBlock Text="Checkout"/>
                     </StackPanel>
                 </Button>
 
@@ -153,17 +165,8 @@
 
                 <!--Counter Title-->
                 <TextBlock Text="Number of Carts: " Grid.Row="4" FontSize="18" FontWeight="SemiBold" Foreground="#121518" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                <TextBlock Text="Filter by" Grid.Row="4" FontSize="13" FontWeight="SemiBold" Margin="0 0 215 0" Foreground="#121518" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-
-                <!--Filter Textbox-->
-                <Grid Width="200" HorizontalAlignment="Right" Grid.Row="4">
-                    <TextBlock Margin="15 0" VerticalAlignment="Center" Foreground="#B0B9C6" IsHitTestVisible="False"
-                   Panel.ZIndex="1" Text="Search by Name ..." 
-                   Visibility="{Binding ElementName=textBoxFilter, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" />
-                    <TextBox Name="textBoxFilter" Style="{StaticResource filterTextBox}" 
-                 Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}"
-                 TextChanged="FilterTextChanged" />
-                </Grid>
+                <TextBlock Text="Total" Grid.Row="4" FontSize="16" FontWeight="Bold" Margin="603,0,0,0" Foreground="#121518" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBlock Name="txtTotalPrice" Text="{Binding TotalPrice, StringFormat=C}" Grid.Row="4" FontSize="16" FontWeight="Bold" Margin="0 0 50 0" Foreground="#121518" HorizontalAlignment="Right" VerticalAlignment="Center"/>
 
                 <!--Members Data Grid-->
                 <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="CartDataGrid" Style="{DynamicResource DataGridStyle1}">
@@ -208,9 +211,10 @@
                     <TextBlock Grid.Column="0" />
                     <TextBlock Grid.Column="1" />
                     <TextBlock Grid.Column="2" />
-                    <TextBlock Grid.Column="3" FontWeight="Bold" FontSize="16" Text="Total:" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 10 0"/>
-                    <TextBlock Grid.Column="4" x:Name="TotalPriceTextBlock" FontWeight="Bold" FontSize="16" Foreground="#db4b2e" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 10 0"/>
+
+
                 </Grid>
+                
             </Grid>
 
         </Grid>

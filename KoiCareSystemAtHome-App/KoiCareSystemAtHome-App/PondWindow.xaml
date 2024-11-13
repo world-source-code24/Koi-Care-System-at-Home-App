@@ -76,7 +76,18 @@
                                     <TextBlock Text="Pond Monitor"/>
                                 </StackPanel>
                             </Button>
-
+                            <Button Style="{StaticResource menuButton}" Click="Water_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="Water" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Text="Water Parameter"/>
+                                </StackPanel>
+                            </Button>
+                            <Button Style="{StaticResource menuButton}" Click="Product_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="Package" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Text="Products"/>
+                                </StackPanel>
+                            </Button>
                             <Button Style="{StaticResource menuButton}" Click="Cart_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Cart" Style="{StaticResource menuButtonIcon}"/>

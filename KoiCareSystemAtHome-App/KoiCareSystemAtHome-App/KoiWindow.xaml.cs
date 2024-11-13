@@ -438,8 +438,18 @@ namespace KoiCareSystemAtHome_App
             koiWindow.Show();
             this.Close();
         }
-
-
+        private void Product_Click(object sender, RoutedEventArgs e)
+        {
+            ProductWindow product = new ProductWindow(accId);
+            product.Show();
+            this.Close();
+        }
+        private void Water_Click(object sender, RoutedEventArgs e)
+        {
+            WaterParaWindow waterParaWindow = new WaterParaWindow(accId);
+            waterParaWindow.Show();
+            this.Close();
+        }
         private void Home_Click(object sender, RoutedEventArgs e)
         {
             HomeWindow homeWindow = new HomeWindow(accId);

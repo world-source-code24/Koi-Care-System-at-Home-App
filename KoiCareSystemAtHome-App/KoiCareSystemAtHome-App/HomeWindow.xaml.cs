@@ -26,25 +26,15 @@ namespace KoiCareSystemAtHome_App
         public HomeWindow(int accId)
         {
             InitializeComponent();
-            RoyalIntro.Text = "Is a web-app that helps users proactively manage and provide the best assessments so that users can take good care of Koi fish.\r\n\r\nIn addition, we also provide products that help users take the best care of Koi fish from fish care accessories from leading countries in the world such as the US, Japan,... and foods that help increase color and size come from the US, Vietnam,... with the aim of supporting users in managing Koi fish ponds at home.";
+            RoyalIntro.Text = "Is an application that helps users proactively manage and provide the best assessments so that users can take good care of Koi fish.\r\n\r\nIn addition, we also provide products that help users take the best care of Koi fish from fish care accessories from leading countries in the world such as the US, Japan,... and foods that help increase color and size come from the US, Vietnam,... with the aim of supporting users in managing Koi fish ponds at home.";
             this.accId = accId;
             productRepository = new ProductRepository();
             Window_Loaded();
         }
 
         private  void Window_Loaded()
-        {
-            var products = productRepository.GetAllProducts().Select(p => new 
-            {
-               p.ProductId,
-               p.Name,
-               p.Price,
-               p.Category,
-               p.Stock
-            });
+        { 
 
-            ProductGrid.ItemsSource = products;
-            
         }
 
         private void DetailButton_Click(object sender, RoutedEventArgs e)
@@ -63,7 +53,12 @@ namespace KoiCareSystemAtHome_App
             userProfileWindow.Show();
             this.Close();
         }
-
+        private void Water_Click(object sender, RoutedEventArgs e)
+        {
+            WaterParaWindow waterParaWindow = new WaterParaWindow(accId);
+            waterParaWindow.Show();
+            this.Close();
+        }
         private void PondMonitor_Click(object sender, RoutedEventArgs e)
         {
             PondWindow pondWindow = new PondWindow(accId);
@@ -91,35 +86,41 @@ namespace KoiCareSystemAtHome_App
             homeWindow.Show();
             this.Close();
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Product_Click(object sender, RoutedEventArgs e)
         {
-            Button clickedButton = sender as Button;
+            ProductWindow product = new ProductWindow(accId);
+            product.Show();
+            this.Close();
+        }
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    Button clickedButton = sender as Button;
            
-            if (clickedButton == btn_detail)
-            {
-                ChangUI(2);
-            }
-            else if (clickedButton == btn_list)
-            {
-                ChangUI(1);
-            }
-        }
-        private void ChangUI(int numUI)
-        {
-            switch (numUI)
-            {
-                case 1:
-                    ChangeUIWhenClickButton(btn_list, btn_detail);
+        //    if (clickedButton == btn_detail)
+        //    {
+        //        ChangUI(2);
+        //    }
+        //    else if (clickedButton == btn_list)
+        //    {
+        //        ChangUI(1);
+        //    }
+        //}
+        //private void ChangUI(int numUI)
+        //{
+        //    switch (numUI)
+        //    {
+        //        case 1:
+        //            ChangeUIWhenClickButton(btn_list, btn_detail);
                     
-                    gridHome.Visibility = Visibility.Visible;
-                    break;
-                case 2:
-                    ChangeUIWhenClickButton(btn_detail,btn_list);
-                    gridHome.Visibility = Visibility.Collapsed;
+        //            gridHome.Visibility = Visibility.Visible;
+        //            break;
+        //        case 2:
+        //            ChangeUIWhenClickButton(btn_detail,btn_list);
+        //            gridHome.Visibility = Visibility.Collapsed;
                     
-                    break;
-            }
-        }
+        //            break;
+        //    }
+        //}
 
         private void ChangeUIWhenClickButton(Button clickButton, Button button)
         {
@@ -161,5 +162,6 @@ namespace KoiCareSystemAtHome_App
 
         }
 
+        
     }
 }

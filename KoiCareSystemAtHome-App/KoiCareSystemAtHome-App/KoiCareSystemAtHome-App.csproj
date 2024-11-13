@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <None Remove="img\ca.jpg" />
+    <None Remove="img\fter.jpg" />
     <None Remove="img\loginBackground.jpg" />
     <None Remove="img\logo.png.jpg" />
   </ItemGroup>
@@ -25,6 +26,9 @@
 
   <ItemGroup>
     <Resource Include="img\ca.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\fter.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="img\loginBackground.jpg">

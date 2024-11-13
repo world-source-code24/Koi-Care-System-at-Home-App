@@ -14,6 +14,9 @@ namespace KoiCare_Repositories
         public bool AddProductToCart(int accId, int productId, int quantity)
             => CartDAO.Instance.AddToCart(accId, productId, quantity);
 
+        public bool ClearCart(int accId)
+            => CartDAO.Instance.ClearCart(accId);
+
         public List<CartTbl> GetCartItems(int accId)
             => CartDAO.Instance.GetCartItems(accId);
 

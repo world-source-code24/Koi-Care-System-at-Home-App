@@ -12,5 +12,6 @@ namespace KoiCare_Repositories.IRepositories
         public List<CartTbl> GetCartItems(int accId);
         public bool AddProductToCart(int accId, int productId, int quantity);
         public bool RemoveProductFromCart(int accId, int productId);
+        public bool ClearCart(int accId);
     }
 }

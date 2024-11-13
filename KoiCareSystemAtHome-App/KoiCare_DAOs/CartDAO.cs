@@ -79,6 +79,31 @@ namespace KoiCare_DAOs
             }
             return false;
         }
+        public bool ClearCart(int accId)
+        {
+            try
+            {
+
+                var cartItems = _context.CartTbls.Where(c => c.AccId == accId).ToList();
+
+                if (cartItems != null && cartItems.Any())
+                {
+
+                    _context.CartTbls.RemoveRange(cartItems);
+
+
+                    _context.SaveChanges();
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine($"Error clearing cart: {ex.Message}");
+                return false;
+            }
+        }
     }
 
 }
