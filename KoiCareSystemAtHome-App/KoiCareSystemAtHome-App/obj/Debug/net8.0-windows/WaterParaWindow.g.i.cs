@@ -95,7 +95,7 @@ namespace KoiCareSystemAtHome_App {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/KoiCareSystemAtHome-App;component/waterparawindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/KoiCareSystemAtHome-App;V1.0.0.0;component/waterparawindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\WaterParaWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

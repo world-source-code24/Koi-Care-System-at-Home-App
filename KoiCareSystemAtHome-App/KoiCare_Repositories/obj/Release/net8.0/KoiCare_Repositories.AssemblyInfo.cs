@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KoiCare_Repositories")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fcacdf90e957e3ea2b68de07c316312ff0862b04")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f2c46fe2a222fc2e3a4a687c78f03925525de050")]
 [assembly: System.Reflection.AssemblyProductAttribute("KoiCare_Repositories")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KoiCare_Repositories")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

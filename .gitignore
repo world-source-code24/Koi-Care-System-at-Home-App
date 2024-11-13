@@ -2,5 +2,83 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/.vs
-/KoiCareSystemAtHome-App/.vs/KoiCareSystemAtHome-App
+# Visual Studio files
+.vs/
+.KoiCareSystemAtHome-App/.vs/KoiCareSystemAtHome-App
+
+# Build directories
+bin/
+obj/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Auto-generated files
+Generated/
+
+# Build results
+*.Cache
+*.ilk
+*.log
+*.obj
+*.pch
+*.pdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*.vspscc
+*.vssscc
+
+# Visual Studio Code settings
+.vscode/
+
+# Rider settings
+.idea/
+*.sln.iml
+
+# Resharper
+_ReSharper*/
+*.DotSettings.user
+
+# Test Results
+TestResults/
+
+# NuGet Packages
+*.nupkg
+packages/
+**/packages/*
+
+# Publish output
+.publish/
+
+# Local IDE history
+.idea/
+
+# System files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+*.swp
+*.swo
+*~
+
+# Configurations (adjust for sensitive configurations)
+appsettings.Development.json
+appsettings.Production.json
+secrets.json

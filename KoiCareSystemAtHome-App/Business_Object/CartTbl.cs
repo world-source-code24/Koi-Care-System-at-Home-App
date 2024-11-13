@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Business_Object.Models;
+namespace Business_Object;
 
 public partial class CartTbl
 {

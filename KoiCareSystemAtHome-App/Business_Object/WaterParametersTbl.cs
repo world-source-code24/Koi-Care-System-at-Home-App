@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Business_Object.Models;
+namespace Business_Object;
 
 public partial class WaterParametersTbl
 {
@@ -23,7 +23,7 @@ public partial class WaterParametersTbl
 
     public decimal? TotalChlorines { get; set; }
 
-    public DateTime Date { get; set; }
+    public DateTime? Date { get; set; }
 
     public string? Note { get; set; }
 

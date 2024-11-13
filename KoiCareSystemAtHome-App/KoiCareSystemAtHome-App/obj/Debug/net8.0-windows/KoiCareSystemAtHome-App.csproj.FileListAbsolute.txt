@@ -132,7 +132,6 @@ D:\Source\Repos\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCareSyste
 D:\Source\Repos\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCareSystemAtHome-App\obj\Debug\net8.0-windows\KoiCareSystemAtHome-App.dll
 D:\Source\Repos\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCareSystemAtHome-App\obj\Debug\net8.0-windows\refint\KoiCareSystemAtHome-App.dll
 D:\Source\Repos\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCareSystemAtHome-App\obj\Debug\net8.0-windows\KoiCareSystemAtHome-App.pdb
-D:\Source\Repos\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCareSystemAtHome-App\obj\Debug\net8.0-windows\WaterParaWindow.g.cs
 D:\Source\Repos\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCareSystemAtHome-App\bin\Debug\net8.0-windows\KoiCareSystemAtHome-App.exe
 D:\Source\Repos\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCareSystemAtHome-App\bin\Debug\net8.0-windows\KoiCareSystemAtHome-App.deps.json
 D:\Source\Repos\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCareSystemAtHome-App\bin\Debug\net8.0-windows\KoiCareSystemAtHome-App.runtimeconfig.json
@@ -238,7 +237,6 @@ D:\Source\Repos\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCareSyste
 D:\Source\Repos\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCareSystemAtHome-App\bin\Debug\net8.0-windows\KoiCare_DAOs.pdb
 D:\Source\Repos\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCareSystemAtHome-App\bin\Debug\net8.0-windows\KoiCare_Repositories.pdb
 D:\Source\Repos\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCareSystemAtHome-App\obj\Debug\net8.0-windows\MainWindow.baml
-D:\Source\Repos\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCareSystemAtHome-App\obj\Debug\net8.0-windows\WaterParaWindow.baml
 D:\Source\Repos\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCareSystemAtHome-App\obj\Debug\net8.0-windows\KoiCareSystemAtHome-App.g.resources
 D:\Source\Repos\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCareSystemAtHome-App\obj\Debug\net8.0-windows\KoiCareSystemAtHome-App.GeneratedMSBuildEditorConfig.editorconfig
 D:\Source\Repos\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCareSystemAtHome-App\obj\Debug\net8.0-windows\KoiCareSystemAtHome-App.AssemblyInfoInputs.cache

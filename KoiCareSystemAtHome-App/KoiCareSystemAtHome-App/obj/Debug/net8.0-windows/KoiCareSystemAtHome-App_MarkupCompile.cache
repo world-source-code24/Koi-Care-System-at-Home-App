@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 D:\Source\Repos\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCareSystemAtHome-App\App.xaml
-2212133806
+4775387979
 
-6-1789233439
-286-484610103
-MainWindow.xaml;WaterParaWindow.xaml;
+7955250011
+285758805451
+KoiWindow.xaml;LoginWindow.xaml;MainWindow.xaml;PondWindow.xaml;
 
-False
+True
 

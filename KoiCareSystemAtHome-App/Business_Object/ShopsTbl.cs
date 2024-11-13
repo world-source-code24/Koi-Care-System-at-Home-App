@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Business_Object.Models;
+namespace Business_Object;
 
 public partial class ShopsTbl
 {
     public int ShopId { get; set; }
 
-    public string Name { get; set; } = null!;
+    public string? Name { get; set; }
 
-    public string Phone { get; set; } = null!;
+    public string? Phone { get; set; }
 
     public string? Address { get; set; }
 

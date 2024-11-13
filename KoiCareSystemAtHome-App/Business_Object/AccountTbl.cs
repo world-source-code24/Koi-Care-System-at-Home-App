@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Business_Object.Models;
+namespace Business_Object;
 
 public partial class AccountTbl
 {
@@ -15,13 +15,13 @@ public partial class AccountTbl
 
     public string? Image { get; set; }
 
-    public string Phone { get; set; } = null!;
+    public string? Phone { get; set; }
 
-    public string Address { get; set; } = null!;
+    public string? Address { get; set; }
 
     public string Role { get; set; } = null!;
 
-    public DateOnly StartDate { get; set; }
+    public DateOnly? StartDate { get; set; }
 
     public DateOnly? EndDate { get; set; }
 
@@ -29,11 +29,7 @@ public partial class AccountTbl
 
     public virtual ICollection<CartTbl> CartTbls { get; set; } = new List<CartTbl>();
 
-    public virtual ICollection<NotesTbl> NotesTbls { get; set; } = new List<NotesTbl>();
-
     public virtual ICollection<OrdersTbl> OrdersTbls { get; set; } = new List<OrdersTbl>();
 
     public virtual ICollection<PondsTbl> PondsTbls { get; set; } = new List<PondsTbl>();
-
-    public virtual ICollection<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();
 }

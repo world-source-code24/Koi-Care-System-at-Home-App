@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using Business_Object.Models;
+using Microsoft.Extensions.Configuration;
 
-namespace KoiCare_DAOs;
+namespace Business_Object;
 
-public partial class KoicareathomeContext : DbContext
+public partial class KoiCareSystemAppContext : DbContext
 {
-    public KoicareathomeContext()
+    public KoiCareSystemAppContext()
     {
     }
 
-    public KoicareathomeContext(DbContextOptions<KoicareathomeContext> options)
+    public KoiCareSystemAppContext(DbContextOptions<KoiCareSystemAppContext> options)
         : base(options)
     {
     }
@@ -20,11 +20,7 @@ public partial class KoicareathomeContext : DbContext
 
     public virtual DbSet<CartTbl> CartTbls { get; set; }
 
-    public virtual DbSet<KoiGrowthChartsTbl> KoiGrowthChartsTbls { get; set; }
-
     public virtual DbSet<KoisTbl> KoisTbls { get; set; }
-
-    public virtual DbSet<NotesTbl> NotesTbls { get; set; }
 
     public virtual DbSet<OrderDetailsTbl> OrderDetailsTbls { get; set; }
 
@@ -34,28 +30,34 @@ public partial class KoicareathomeContext : DbContext
 
     public virtual DbSet<ProductsTbl> ProductsTbls { get; set; }
 
-    public virtual DbSet<RefreshToken> RefreshTokens { get; set; }
-
     public virtual DbSet<ShopsTbl> ShopsTbls { get; set; }
 
     public virtual DbSet<WaterParametersTbl> WaterParametersTbls { get; set; }
+    private string GetConnectionString()
+    {
+        IConfiguration config = new ConfigurationBuilder()
+             .SetBasePath(Directory.GetCurrentDirectory())
+                    .AddJsonFile("appsettings.json", true, true)
+                    .Build();
+        var strConn = config["ConnectionStrings:DefaultConnectionStringDB"];
+
+        return strConn;
+    }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=koicaresever.database.windows.net,1433;Database=koicareathome;Uid=mysql;Pwd=minh0123456789.,;");
+        => optionsBuilder.UseSqlServer(GetConnectionString());
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<AccountTbl>(entity =>
         {
-            entity.HasKey(e => e.AccId).HasName("PK__account___A471AFDA953244D3");
+            entity.HasKey(e => e.AccId).HasName("PK__account___A471AFDA80CB25AE");
 
             entity.ToTable("account_tbl");
 
             entity.Property(e => e.AccId).HasColumnName("accId");
             entity.Property(e => e.Address)
-                .HasMaxLength(200)
-                .HasDefaultValue("")
+                .HasColumnType("text")
                 .HasColumnName("address");
             entity.Property(e => e.Email)
                 .HasMaxLength(50)
@@ -63,7 +65,6 @@ public partial class KoicareathomeContext : DbContext
                 .HasColumnName("email");
             entity.Property(e => e.EndDate).HasColumnName("endDate");
             entity.Property(e => e.Image)
-                .HasMaxLength(200)
                 .IsUnicode(false)
                 .HasColumnName("image");
             entity.Property(e => e.Name)
@@ -77,12 +78,11 @@ public partial class KoicareathomeContext : DbContext
             entity.Property(e => e.Phone)
                 .HasMaxLength(15)
                 .IsUnicode(false)
-                .HasDefaultValue("")
                 .HasColumnName("phone");
             entity.Property(e => e.Role)
                 .HasMaxLength(15)
                 .IsUnicode(false)
-                .HasDefaultValue("Guest")
+                .HasDefaultValue("guest")
                 .HasColumnName("role");
             entity.Property(e => e.StartDate).HasColumnName("startDate");
             entity.Property(e => e.Status)
@@ -92,7 +92,7 @@ public partial class KoicareathomeContext : DbContext
 
         modelBuilder.Entity<CartTbl>(entity =>
         {
-            entity.HasKey(e => new { e.AccId, e.ProductId }).HasName("PK__cart_tbl__16A0A2CC8AED831E");
+            entity.HasKey(e => new { e.AccId, e.ProductId }).HasName("PK__cart_tbl__16A0A2CC8669FD51");
 
             entity.ToTable("cart_tbl");
 
@@ -104,41 +104,16 @@ public partial class KoicareathomeContext : DbContext
 
             entity.HasOne(d => d.Acc).WithMany(p => p.CartTbls)
                 .HasForeignKey(d => d.AccId)
-                .HasConstraintName("FK__cart_tbl__accId__7C4F7684");
+                .HasConstraintName("FK__cart_tbl__accId__534D60F1");
 
             entity.HasOne(d => d.Product).WithMany(p => p.CartTbls)
                 .HasForeignKey(d => d.ProductId)
-                .HasConstraintName("FK__cart_tbl__produc__7D439ABD");
-        });
-
-        modelBuilder.Entity<KoiGrowthChartsTbl>(entity =>
-        {
-            entity.HasKey(e => e.ChartId).HasName("PK__koi_grow__D7FFC8C2B4975265");
-
-            entity.ToTable("koi_growth_charts_tbl");
-
-            entity.Property(e => e.ChartId).HasColumnName("chart_id");
-            entity.Property(e => e.Date).HasColumnName("date");
-            entity.Property(e => e.HealthStatus)
-                .HasMaxLength(20)
-                .IsUnicode(false)
-                .HasColumnName("healthStatus");
-            entity.Property(e => e.KoiId).HasColumnName("koiId");
-            entity.Property(e => e.Length)
-                .HasColumnType("decimal(5, 2)")
-                .HasColumnName("length");
-            entity.Property(e => e.Weight)
-                .HasColumnType("decimal(5, 2)")
-                .HasColumnName("weight");
-
-            entity.HasOne(d => d.Koi).WithMany(p => p.KoiGrowthChartsTbls)
-                .HasForeignKey(d => d.KoiId)
-                .HasConstraintName("FK__koi_growt__koiId__7E37BEF6");
+                .HasConstraintName("FK__cart_tbl__produc__5441852A");
         });
 
         modelBuilder.Entity<KoisTbl>(entity =>
         {
-            entity.HasKey(e => e.KoiId).HasName("PK__kois_tbl__915924CFF0B0C732");
+            entity.HasKey(e => e.KoiId).HasName("PK__kois_tbl__915924CF7B487A8A");
 
             entity.ToTable("kois_tbl");
 
@@ -148,7 +123,6 @@ public partial class KoicareathomeContext : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("breed");
             entity.Property(e => e.Image)
-                .HasMaxLength(200)
                 .IsUnicode(false)
                 .HasColumnName("image");
             entity.Property(e => e.Length)
@@ -169,33 +143,12 @@ public partial class KoicareathomeContext : DbContext
             entity.HasOne(d => d.Pond).WithMany(p => p.KoisTbls)
                 .HasForeignKey(d => d.PondId)
                 .OnDelete(DeleteBehavior.SetNull)
-                .HasConstraintName("FK__kois_tbl__pondId__7F2BE32F");
-        });
-
-        modelBuilder.Entity<NotesTbl>(entity =>
-        {
-            entity.HasKey(e => e.NoteId).HasName("PK__notes_tb__03C97EFDA4453DE2");
-
-            entity.ToTable("notes_tbl");
-
-            entity.Property(e => e.NoteId).HasColumnName("noteId");
-            entity.Property(e => e.AccId).HasColumnName("accId");
-            entity.Property(e => e.NoteName)
-                .HasMaxLength(50)
-                .HasDefaultValue("")
-                .HasColumnName("noteName");
-            entity.Property(e => e.NoteText)
-                .HasColumnType("text")
-                .HasColumnName("noteText");
-
-            entity.HasOne(d => d.Acc).WithMany(p => p.NotesTbls)
-                .HasForeignKey(d => d.AccId)
-                .HasConstraintName("FK__notes_tbl__accId__00200768");
+                .HasConstraintName("FK__kois_tbl__pondId__4222D4EF");
         });
 
         modelBuilder.Entity<OrderDetailsTbl>(entity =>
         {
-            entity.HasKey(e => new { e.OrderId, e.ProductId }).HasName("PK__order_de__BAD83E4BD242818A");
+            entity.HasKey(e => new { e.OrderId, e.ProductId }).HasName("PK__order_de__BAD83E4BAD89E37D");
 
             entity.ToTable("order_details_tbl");
 
@@ -208,16 +161,16 @@ public partial class KoicareathomeContext : DbContext
 
             entity.HasOne(d => d.Order).WithMany(p => p.OrderDetailsTbls)
                 .HasForeignKey(d => d.OrderId)
-                .HasConstraintName("FK__order_det__order__01142BA1");
+                .HasConstraintName("FK__order_det__order__4E88ABD4");
 
             entity.HasOne(d => d.Product).WithMany(p => p.OrderDetailsTbls)
                 .HasForeignKey(d => d.ProductId)
-                .HasConstraintName("FK__order_det__produ__02084FDA");
+                .HasConstraintName("FK__order_det__produ__4F7CD00D");
         });
 
         modelBuilder.Entity<OrdersTbl>(entity =>
         {
-            entity.HasKey(e => e.OrderId).HasName("PK__orders_t__0809335D73547A87");
+            entity.HasKey(e => e.OrderId).HasName("PK__orders_t__0809335D3A505048");
 
             entity.ToTable("orders_tbl");
 
@@ -237,12 +190,12 @@ public partial class KoicareathomeContext : DbContext
             entity.HasOne(d => d.Acc).WithMany(p => p.OrdersTbls)
                 .HasForeignKey(d => d.AccId)
                 .OnDelete(DeleteBehavior.SetNull)
-                .HasConstraintName("FK__orders_tb__accId__02FC7413");
+                .HasConstraintName("FK__orders_tb__accId__46E78A0C");
         });
 
         modelBuilder.Entity<PondsTbl>(entity =>
         {
-            entity.HasKey(e => e.PondId).HasName("PK__ponds_tb__7432749998457A7C");
+            entity.HasKey(e => e.PondId).HasName("PK__ponds_tb__74327499EEA19E34");
 
             entity.ToTable("ponds_tbl");
 
@@ -253,23 +206,20 @@ public partial class KoicareathomeContext : DbContext
                 .HasColumnName("depth");
             entity.Property(e => e.DrainCount).HasColumnName("drain_count");
             entity.Property(e => e.Image)
-                .HasMaxLength(200)
                 .IsUnicode(false)
                 .HasColumnName("image");
-            entity.Property(e => e.Name)
-                .HasMaxLength(50)
-                .HasColumnName("name");
+            entity.Property(e => e.Name).HasColumnName("name");
             entity.Property(e => e.PumpCapacity).HasColumnName("pump_capacity");
             entity.Property(e => e.Volume).HasColumnName("volume");
 
             entity.HasOne(d => d.Acc).WithMany(p => p.PondsTbls)
                 .HasForeignKey(d => d.AccId)
-                .HasConstraintName("FK__ponds_tbl__accId__03F0984C");
+                .HasConstraintName("FK__ponds_tbl__accId__3C69FB99");
         });
 
         modelBuilder.Entity<ProductsTbl>(entity =>
         {
-            entity.HasKey(e => e.ProductId).HasName("PK__products__2D10D16A906D5970");
+            entity.HasKey(e => e.ProductId).HasName("PK__products__2D10D16AC2AA778C");
 
             entity.ToTable("products_tbl");
 
@@ -299,50 +249,18 @@ public partial class KoicareathomeContext : DbContext
             entity.HasOne(d => d.Shop).WithMany(p => p.ProductsTbls)
                 .HasForeignKey(d => d.ShopId)
                 .OnDelete(DeleteBehavior.SetNull)
-                .HasConstraintName("FK__products___shopI__04E4BC85");
-        });
-
-        modelBuilder.Entity<RefreshToken>(entity =>
-        {
-            entity.HasKey(e => e.TokenId).HasName("PK__refresh___AC16DB47EBF9FE16");
-
-            entity.ToTable("refresh_token");
-
-            entity.Property(e => e.TokenId)
-                .HasMaxLength(100)
-                .HasColumnName("tokenId");
-            entity.Property(e => e.AccId).HasColumnName("accId");
-            entity.Property(e => e.ExpiredAt)
-                .HasColumnType("datetime")
-                .HasColumnName("expiredAt");
-            entity.Property(e => e.IsRevoked).HasColumnName("isRevoked");
-            entity.Property(e => e.IsUsed).HasColumnName("isUsed");
-            entity.Property(e => e.IssueAt)
-                .HasColumnType("datetime")
-                .HasColumnName("issueAt");
-            entity.Property(e => e.JwtId)
-                .HasMaxLength(100)
-                .HasColumnName("jwtId");
-            entity.Property(e => e.Token)
-                .HasMaxLength(100)
-                .HasColumnName("token");
-
-            entity.HasOne(d => d.Acc).WithMany(p => p.RefreshTokens)
-                .HasForeignKey(d => d.AccId)
-                .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("FK__refresh_t__accId__05D8E0BE");
+                .HasConstraintName("FK__products___shopI__4BAC3F29");
         });
 
         modelBuilder.Entity<ShopsTbl>(entity =>
         {
-            entity.HasKey(e => e.ShopId).HasName("PK__shops_tb__E5C424DC641D9AC5");
+            entity.HasKey(e => e.ShopId).HasName("PK__shops_tb__E5C424DC2B748FB5");
 
             entity.ToTable("shops_tbl");
 
             entity.Property(e => e.ShopId).HasColumnName("shopId");
             entity.Property(e => e.Address)
                 .HasMaxLength(200)
-                .HasDefaultValue("")
                 .HasColumnName("address");
             entity.Property(e => e.Name)
                 .HasMaxLength(50)
@@ -350,13 +268,12 @@ public partial class KoicareathomeContext : DbContext
             entity.Property(e => e.Phone)
                 .HasMaxLength(15)
                 .IsUnicode(false)
-                .HasDefaultValue("")
                 .HasColumnName("phone");
         });
 
         modelBuilder.Entity<WaterParametersTbl>(entity =>
         {
-            entity.HasKey(e => e.ParameterId).HasName("PK__water_pa__F762666B9BCD2DBE");
+            entity.HasKey(e => e.ParameterId).HasName("PK__water_pa__F762666B902DEF76");
 
             entity.ToTable("water_parameters_tbl");
 
@@ -395,7 +312,7 @@ public partial class KoicareathomeContext : DbContext
 
             entity.HasOne(d => d.Pond).WithMany(p => p.WaterParametersTbls)
                 .HasForeignKey(d => d.PondId)
-                .HasConstraintName("FK__water_par__pondI__06CD04F7");
+                .HasConstraintName("FK__water_par__pondI__3F466844");
         });
 
         OnModelCreatingPartial(modelBuilder);

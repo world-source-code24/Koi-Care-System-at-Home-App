@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Business_Object.Models;
+namespace Business_Object;
 
 public partial class PondsTbl
 {
     public int PondId { get; set; }
 
-    public string Name { get; set; } = null!;
+    public string? Name { get; set; }
 
     public string? Image { get; set; }
 

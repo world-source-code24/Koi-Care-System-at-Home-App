@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Business_Object.Models;
+namespace Business_Object;
 
 public partial class KoisTbl
 {
@@ -15,17 +15,15 @@ public partial class KoisTbl
 
     public int Age { get; set; }
 
-    public decimal Length { get; set; }
+    public decimal? Length { get; set; }
 
-    public decimal Weight { get; set; }
+    public decimal? Weight { get; set; }
 
-    public bool Sex { get; set; }
+    public bool? Sex { get; set; }
 
-    public string Breed { get; set; } = null!;
+    public string? Breed { get; set; }
 
     public int? PondId { get; set; }
-
-    public virtual ICollection<KoiGrowthChartsTbl> KoiGrowthChartsTbls { get; set; } = new List<KoiGrowthChartsTbl>();
 
     public virtual PondsTbl? Pond { get; set; }
 }

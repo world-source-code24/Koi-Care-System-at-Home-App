@@ -1978,19 +1978,6 @@
         "runtime": {
           "bin/placeholder/KoiCare_Repositories.dll": {}
         }
-      },
-      "KoiCare_Services/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v8.0",
-        "dependencies": {
-          "KoiCare_Repositories": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/KoiCare_Services.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/KoiCare_Services.dll": {}
-        }
       }
     }
   },
@@ -5073,16 +5060,11 @@
       "type": "project",
       "path": "../KoiCare_Repositories/KoiCare_Repositories.csproj",
       "msbuildProject": "../KoiCare_Repositories/KoiCare_Repositories.csproj"
-    },
-    "KoiCare_Services/1.0.0": {
-      "type": "project",
-      "path": "../KoiCare_Services/KoiCare_Services.csproj",
-      "msbuildProject": "../KoiCare_Services/KoiCare_Services.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0-windows7.0": [
-      "KoiCare_Services >= 1.0.0",
+      "KoiCare_Repositories >= 1.0.0",
       "MahApps.Metro.IconPacks >= 5.0.1"
     ]
   },
@@ -5114,8 +5096,8 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "projectReferences": {
-            "D:\\Source\\Repos\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\KoiCare_Services\\KoiCare_Services.csproj": {
-              "projectPath": "D:\\Source\\Repos\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\KoiCare_Services\\KoiCare_Services.csproj"
+            "D:\\Source\\Repos\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\KoiCare_Repositories\\KoiCare_Repositories.csproj": {
+              "projectPath": "D:\\Source\\Repos\\Koi-Care-System-at-Home-App\\KoiCareSystemAtHome-App\\KoiCare_Repositories\\KoiCare_Repositories.csproj"
             }
           }
         }
