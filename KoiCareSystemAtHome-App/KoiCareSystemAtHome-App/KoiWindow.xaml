@@ -39,7 +39,7 @@
                         <Border Width="80" Height="80" Padding="3" Background="White" CornerRadius="100" DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="30 -30 0 0">
                             <Ellipse Margin="0,-3,-29,-3">
                                 <Ellipse.Fill>
-                                    <ImageBrush ImageSource="/img/logo.png.jpg"/>
+                                    <ImageBrush ImageSource="D:\Source\Repos\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCareSystemAtHome-App\img\logo.png"/>
                                 </Ellipse.Fill>
                             </Ellipse>
                         </Border>
@@ -59,7 +59,7 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource menuButton}">
+                            <Button Style="{StaticResource menuButton}" Click="Profile_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Account" Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="Profie"/>
@@ -80,10 +80,10 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource menuButton}">
+                            <Button Style="{StaticResource menuButton}" Click="WaterParameter_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="ChartBar" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="Statistics"/>
+                                    <TextBlock Text="Water Parameter"/>
                                 </StackPanel>
                             </Button>
 
@@ -335,7 +335,7 @@
                             <!---Column 2-->
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="1" Grid.Row="0">
                                 <TextBlock Text="Name:" VerticalAlignment="Center"/>
-                                <TextBox Name="name" Height="25" FontSize="16" Margin="0 5" Text="asd"/>
+                                <TextBox Name="name" Height="25" FontSize="16" Margin="0 5"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="1" Grid.Row="1">

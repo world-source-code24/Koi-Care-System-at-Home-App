@@ -252,6 +252,20 @@ namespace KoiCareSystemAtHome_App
             }
         }
 
+        private void Profile_Click(object sender, RoutedEventArgs e)
+        {
+            UserProfile userProfile = new UserProfile(accId);
+            userProfile.Show();
+            this.Close();
+        }
+
+        private void WaterParameter_Click(object sender, RoutedEventArgs e)
+        {
+            WaterParaWindow waterParaWindow = new WaterParaWindow(accId);
+            waterParaWindow.Show();
+            this.Close();
+        }
+
         private void PondMonitor_Click(object sender, RoutedEventArgs e)
         {
             PondWindow pondWindow = new PondWindow(accId);

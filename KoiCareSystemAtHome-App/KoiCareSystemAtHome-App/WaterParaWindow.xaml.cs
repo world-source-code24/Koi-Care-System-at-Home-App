@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
@@ -29,6 +30,8 @@ namespace KoiCareSystemAtHome_App
     {
         private readonly IWaterParameterRepo waterRepo;
         private readonly WaterParametersTbl waters;
+        private readonly IPondRepository pondRepository;
+        private List<PondsTbl> ponds;
         private int accId;
         private bool _isEditMode;
         public bool IsEditMode
@@ -65,6 +68,7 @@ namespace KoiCareSystemAtHome_App
         {
             InitializeComponent();
             waterRepo = new WaterParameterRepo();
+            pondRepository = new PondRepository();
             DataContext = this;
             IsEditMode = false;
             this.accId = accId;
@@ -91,6 +95,13 @@ namespace KoiCareSystemAtHome_App
             WaterDataGrid.ItemsSource = _filteredMembers;
         }
 
+        private void LoadPond(ComboBox comboBox, List<PondsTbl> ponds)
+        {
+            comboBox.ItemsSource = ponds;
+            comboBox.DisplayMemberPath = "Name";
+            comboBox.SelectedValuePath = "PondId";
+        }
+
         private void FilterTextChanged(object sender, TextChangedEventArgs e)
         {
             // Call the filter method whenever the TextBox text changes
@@ -115,7 +126,8 @@ namespace KoiCareSystemAtHome_App
                 w.TotalChlorines,
                 w.PhLevel,
             }).ToList();
-
+            ponds = pondRepository.GetPondsByUserId(accId);
+            LoadPond(pondId, ponds);
             // Populate the _koi collection with the fetched data
             _water.Clear();  // Clear the existing collection before adding new data
             foreach (var koi in watersFromDB)
@@ -186,12 +198,12 @@ namespace KoiCareSystemAtHome_App
             if (clickedButton != null)
             {
                 // Access the DataContext of the button (which should be the Koi object)
-                int pondId = (int)clickedButton.CommandParameter;
+                int waterId = (int)clickedButton.CommandParameter;
 
-                var pond = waterRepo.GetParameterById(pondId);
-                if (pond != null)
+                var water = waterRepo.GetParameterById(waterId);
+                if (water != null)
                 {
-                    updateWaterToWindow(pond);
+                    updateWaterToWindow(water);
                     ChangUI(2);
                 }
                 else
@@ -224,30 +236,24 @@ namespace KoiCareSystemAtHome_App
             }
         }
 
-        private void SelectImg_Click(object sender, RoutedEventArgs e)
-        {
-            Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog
-            {
-                Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp|All Files|*.*",
-                Title = "Select a Koi Image"
-            };
-
-            if (openFileDialog.ShowDialog() == true)
-            {
-                // Set the selected image to the Image control
-                KoiImage.Source = new BitmapImage(new Uri(openFileDialog.FileName));
-            }
-            else
-            {
-
-                KoiImage.Source = null;
-            }
-        }
-
         private void KoiManagement_Click(object sender, RoutedEventArgs e)
         {
             KoiWindow koiWindow = new KoiWindow(accId);
             koiWindow.Show();
+            this.Close();
+        }
+
+        private void Profile_Click(object sender, RoutedEventArgs e)
+        {
+            UserProfile userProfile = new UserProfile(accId);
+            userProfile.Show();
+            this.Close();
+        }
+
+        private void Pond_Click(object sender, RoutedEventArgs e)
+        {
+            PondWindow pondWindow = new PondWindow(accId);
+            pondWindow.Show();
             this.Close();
         }
 
@@ -272,7 +278,7 @@ namespace KoiCareSystemAtHome_App
                 ChangUI(1);
             }
         }
-        private void CancelAddKoi_Click()
+        private void CancelAddKoi_Click(object sender, RoutedEventArgs e)
         {
             CleanAddForm();
         }
@@ -297,6 +303,7 @@ namespace KoiCareSystemAtHome_App
                     updateWaterToWindow(updateWater);
                     Window_Loaded();
                 }
+                else MessageBox.Show("Update fail!");
             }
             else
             {
@@ -329,9 +336,9 @@ namespace KoiCareSystemAtHome_App
 
         private void ChangeUIWhenClickButton(Button clickButton, Button button, Button button1)
         {
-            clickButton.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#db4b2e"));
-            button.BorderBrush = Brushes.Transparent;
-            button1.BorderBrush = Brushes.Transparent;
+            clickButton.BorderBrush = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#db4b2e"));
+            button.BorderBrush = System.Windows.Media.Brushes.Transparent;
+            button1.BorderBrush = System.Windows.Media.Brushes.Transparent;
         }
         private void ChangUI(int numUI)
         {
@@ -373,42 +380,39 @@ namespace KoiCareSystemAtHome_App
             txtPO4level.Text = water.Po4Level.ToString();
             txtTotalChlorines.Text = water.TotalChlorines.ToString();
             txtDate.SelectedDate = water.Date;
-
+            pondId.SelectedItem = water.PondId;
         }
         private WaterParametersTbl updateWaterToDb()
         {
-            int pondCurrent = waterRepo.GetParameterById(_waterId).PondId;
             return new WaterParametersTbl
             {
-                ParameterId = _waterId,
-                Temperature = decimal.Parse(txtTemperature.Text),
-                Salt = decimal.Parse(txtSalt.Text),
-                PhLevel = decimal.Parse(txtPHlevel.Text),
-                O2Level = decimal.Parse(txtO2level.Text),
-                No2Level = decimal.Parse(txtNO2level.Text),
-                No3Level = decimal.Parse(txtNO3level.Text),
-                Po4Level = decimal.Parse(txtPO4level.Text),
-                TotalChlorines = decimal.Parse(txtTotalChlorines.Text),
-                Date = txtDate.SelectedDate,
-                PondId = pondCurrent,
+                Temperature = decimal.TryParse(txtTemperatureAdd.Text, out var temperature) ? temperature : 0,
+                Salt = decimal.TryParse(txtSaltAdd.Text, out var salt) ? salt : 0,
+                PhLevel = decimal.TryParse(txtPHlevelAdd.Text, out var phLevel) ? phLevel : 0,
+                O2Level = decimal.TryParse(txtO2levelAdd.Text, out var o2Level) ? o2Level : 0,
+                No2Level = decimal.TryParse(txtNO2levelAdd.Text, out var no2Level) ? no2Level : 0,
+                No3Level = decimal.TryParse(txtNO3levelAdd.Text, out var no3Level) ? no3Level : 0,
+                Po4Level = decimal.TryParse(txtPO4levelAdd.Text, out var po4Level) ? po4Level : 0,
+                TotalChlorines = decimal.TryParse(txtTotalChlorinesAdd.Text, out var totalChlorines) ? totalChlorines : 0,
+                Date = txtDateAdd.SelectedDate ?? DateTime.Now, 
+                PondId = int.TryParse(pondId.SelectedValue?.ToString(), out var parsedPondId) ? parsedPondId : 0,
             };
         }
 
         private WaterParametersTbl saveWaterToDb()
         {
-            int pondCurrent = waterRepo.GetParameterById(_waterId).PondId;
             return new WaterParametersTbl
             {
-                Temperature = decimal.Parse(txtTemperature.Text),
-                Salt = decimal.Parse(txtSalt.Text),
-                PhLevel = decimal.Parse(txtPHlevel.Text),
-                O2Level = decimal.Parse(txtO2level.Text),
-                No2Level = decimal.Parse(txtNO2level.Text),
-                No3Level = decimal.Parse(txtNO3level.Text),
-                Po4Level = decimal.Parse(txtPO4level.Text),
-                TotalChlorines = decimal.Parse(txtTotalChlorines.Text),
-                Date = txtDate.SelectedDate,
-                PondId = pondCurrent,
+                Temperature = decimal.TryParse(txtTemperatureAdd.Text, out var temperature) ? temperature : 0,
+                Salt = decimal.TryParse(txtSaltAdd.Text, out var salt) ? salt : 0,
+                PhLevel = decimal.TryParse(txtPHlevelAdd.Text, out var phLevel) ? phLevel : 0,
+                O2Level = decimal.TryParse(txtO2levelAdd.Text, out var o2Level) ? o2Level : 0,
+                No2Level = decimal.TryParse(txtNO2levelAdd.Text, out var no2Level) ? no2Level : 0,
+                No3Level = decimal.TryParse(txtNO3levelAdd.Text, out var no3Level) ? no3Level : 0,
+                Po4Level = decimal.TryParse(txtPO4levelAdd.Text, out var po4Level) ? po4Level : 0,
+                TotalChlorines = decimal.TryParse(txtTotalChlorinesAdd.Text, out var totalChlorines) ? totalChlorines : 0,
+                Date = txtDateAdd.SelectedDate,
+                PondId = int.TryParse(pondId.SelectedValue?.ToString(), out var parsedPondId) ? parsedPondId : 0,
             };
         }
 

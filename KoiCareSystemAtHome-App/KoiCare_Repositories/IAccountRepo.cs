@@ -11,5 +11,7 @@ namespace KoiCare_Repositories
     {
         public List<AccountTbl> GetAccounts();
         public AccountTbl GetAccount(int id);
+        public bool UpdateAccount(AccountTbl account);
+        public bool CreateAccount(AccountTbl accountTbl);
     }
 }

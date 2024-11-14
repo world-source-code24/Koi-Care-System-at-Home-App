@@ -8,7 +8,7 @@
         Title="LoginWindow" Height="720" Width="1080">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="./img/loginBackground.jpg"/>
+            <ImageBrush ImageSource="D:\Source\Repos\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCareSystemAtHome-App\img\loginBackground.jpg"/>
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -51,10 +51,10 @@
 
         </Grid>
         <Border Grid.Column="1" CornerRadius="15" Background="White" HorizontalAlignment="Left" Margin="10,176,0,0" Grid.Row="1" VerticalAlignment="Top" Height="48" Width="120">
-            <Button Content="Login" Foreground="#FF53CFD4" FontSize="24" Background="Transparent" BorderThickness="0"/>
+            <Button Click="btn_Login" Content="Login" Foreground="#FF53CFD4" FontSize="24" Background="Transparent" BorderThickness="0"/>
         </Border>
         <Border CornerRadius="15" Background="White" Grid.Column="1"  HorizontalAlignment="Left" Margin="230,176,0,0" Grid.Row="1" VerticalAlignment="Top" Height="48" Width="120">
-            <Button Content="Quit" Foreground="#FF53CFD4" FontSize="24" Background="Transparent" BorderThickness="0"/>
+            <Button Click="btn_Close" Content="Quit" Foreground="#FF53CFD4" FontSize="24" Background="Transparent" BorderThickness="0"/>
         </Border>
         
     </Grid>

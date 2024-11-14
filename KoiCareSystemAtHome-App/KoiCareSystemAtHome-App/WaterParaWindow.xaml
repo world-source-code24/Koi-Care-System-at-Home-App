@@ -37,7 +37,7 @@
                         <Border Width="80" Height="80" Padding="3" Background="White" CornerRadius="100" DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="30 -30 0 0">
                             <Ellipse Margin="0,-3,-29,-3">
                                 <Ellipse.Fill>
-                                    <ImageBrush ImageSource="/img/logo.png.jpg"/>
+                                    <ImageBrush ImageSource="D:\Source\Repos\Koi-Care-System-at-Home-App\KoiCareSystemAtHome-App\KoiCareSystemAtHome-App\img\logo.png"/>
                                 </Ellipse.Fill>
                             </Ellipse>
                         </Border>
@@ -57,7 +57,7 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource menuButton}">
+                            <Button Style="{StaticResource menuButton}" Click="Profile_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Account" Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="Profie"/>
@@ -71,17 +71,17 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource menuButton}" Background="#db4b2e" Foreground="White">
+                            <Button Style="{StaticResource menuButton}" Click="Pond_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Monitor" Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="Pond Monitor"/>
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource menuButton}">
+                            <Button Style="{StaticResource menuButton}" Background="#db4b2e" Foreground="White">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="ChartBar" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="Statistics"/>
+                                    <TextBlock Text="Water Parameter"/>
                                 </StackPanel>
                             </Button>
 
@@ -132,13 +132,13 @@
                 </Button>
 
                 <!--Page Title-->
-                <TextBlock x:Name="txtHeader" Text="Pond Management" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0" Foreground="#121518" HorizontalAlignment="Left"/>
+                <TextBlock x:Name="txtHeader" Text="Water Parameter Management" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0" Foreground="#121518" HorizontalAlignment="Left"/>
 
                 <!--Add Button-->
                 <Button x:Name="btn_add1" Style="{StaticResource addButton}" Click="Button_ClickPond">
                     <StackPanel Orientation="Horizontal">
                         <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
-                        <TextBlock Text="Add New Pond"/>
+                        <TextBlock Text="Add New Water"/>
                     </StackPanel>
                 </Button>
 
@@ -149,7 +149,7 @@
                 <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0 10 0 0">
                     <Button x:Name="btn_list" Style="{StaticResource tabButton}" Content="Water List" Width="100" BorderBrush="#db4b2e" Click="Button_ClickPond"/>
                     <Button x:Name="btn_detail" Style="{StaticResource tabButton}" Content="Water Detail" Width="100" Click="Button_ClickPond"/>
-                    <Button x:Name="btn_add" Style="{StaticResource tabButton}" Content="Add New Water" Width="100" Click="Button_Click"/>
+                    <Button x:Name="btn_add" Style="{StaticResource tabButton}" Content="Add New Water" Width="100" Click="Button_ClickPond"/>
                 </StackPanel>
 
                 <!--Counter Title-->
@@ -188,13 +188,13 @@
                                         <Button Style="{StaticResource gridEditButton}" Click="DetailButton_Click">
                                             <Icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}"/>
                                             <Button.CommandParameter>
-                                                <Binding Path="PondId" />
+                                                <Binding Path="ParameterId" />
                                             </Button.CommandParameter>
                                         </Button>
                                         <Button Margin="5 0 0 0" Style="{StaticResource gridRemoveButton}" Click="DeleteButton_Click">
                                             <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>
                                             <Button.CommandParameter>
-                                                <Binding Path="PondId" />
+                                                <Binding Path="ParameterId" />
                                             </Button.CommandParameter>
                                         </Button>
                                     </StackPanel>
@@ -224,12 +224,12 @@
                             <!--Column 1-->
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="0" Grid.Row="0">
                                 <TextBlock Text="Temperature:" VerticalAlignment="Center"/>
-                                <TextBox Name="txtTemperature" Height="25" FontSize="16" Margin="0 5" IsEnabled="{Binding IsEditMode}" />
+                                <TextBox Name="txtTemperature" Height="25" FontSize="16" PreviewTextInput="NumberOnly" Margin="0 5" IsEnabled="{Binding IsEditMode}" />
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="0" Grid.Row="1">
                                 <TextBlock Text="Salt:" VerticalAlignment="Center"/>
-                                <TextBox Name="txtSalt" Height="25" FontSize="16" Margin="0 5" IsEnabled="{Binding IsEditMode}" />
+                                <TextBox Name="txtSalt" Height="25" FontSize="16" Margin="0 5" PreviewTextInput="NumberOnly" IsEnabled="{Binding IsEditMode}" />
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="0" Grid.Row="2">
@@ -240,12 +240,12 @@
                             <!---Column 2-->
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="1" Grid.Row="0">
                                 <TextBlock Text="o2 level:" VerticalAlignment="Center"/>
-                                <TextBox Name="txtO2level" Height="25" FontSize="16" Margin="0 5" IsEnabled="{Binding IsEditMode}" />
+                                <TextBox Name="txtO2level" Height="25" FontSize="16" PreviewTextInput="NumberOnly" Margin="0 5" IsEnabled="{Binding IsEditMode}" />
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="1" Grid.Row="1">
                                 <TextBlock Text="no2 level:" VerticalAlignment="Center"/>
-                                <TextBox Name="txtNO2level" Height="25" FontSize="16" Margin="0 5" IsEnabled="{Binding IsEditMode}" />
+                                <TextBox Name="txtNO2level" Height="25" FontSize="16" Margin="0 5" PreviewTextInput="NumberOnly" IsEnabled="{Binding IsEditMode}" />
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="1" Grid.Row="2">
@@ -266,7 +266,7 @@
 
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="2" Grid.Row="2">
                                 <TextBlock Text="Date:" VerticalAlignment="Center"/>
-                                <DatePicker Name="txtDate" Height="25" FontSize="16" Margin="0 5" IsEnabled="{Binding IsEditMode}" SelectedDate="{Binding SelectedDate}"/>
+                                <DatePicker Name="txtDate" Height="25" FontSize="16" Margin="0 5" PreviewTextInput="NumberOnly" IsEnabled="{Binding IsEditMode}" SelectedDate="{Binding SelectedDate}"/>
                             </StackPanel>
                         </Grid>
 
@@ -297,7 +297,7 @@
                         <!-- Define a grid for labels and text boxes -->
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="250"/>
+                                <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
@@ -308,47 +308,56 @@
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
                             <!--Column 1-->
-                            <Border Width="200" Height="200" Margin="10 0 10 0" Background="White" Grid.Row="0" Grid.RowSpan="3" HorizontalAlignment="Center">
-                                <Image Name="KoiImage" Stretch="Uniform" />
-                            </Border>
-                            <StackPanel Orientation="Vertical" Margin="0 5"  Grid.Row="4">
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 15 0 0">
-                                    <Button Style="{StaticResource selectButton}" Click="SelectImg_Click" >
-                                        <StackPanel Orientation="Horizontal">
-                                            <Icon:PackIconMaterial Kind="Image" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
-                                            <TextBlock Text="Select Image"/>
-                                        </StackPanel>
-                                    </Button>
-
-                                </StackPanel>
+                            <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="0" Grid.Row="0">
+                                <TextBlock Text="Temperature:" VerticalAlignment="Center"/>
+                                <TextBox Name="txtTemperatureAdd" Height="25" FontSize="16" Margin="0 5" PreviewTextInput="NumberOnly"/>
                             </StackPanel>
+
+                            <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="0" Grid.Row="1">
+                                <TextBlock Text="Salt:" VerticalAlignment="Center"/>
+                                <TextBox Name="txtSaltAdd" Height="25" FontSize="16" Margin="0 5" PreviewTextInput="NumberOnly"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="0" Grid.Row="2">
+                                <TextBlock Text="ph level:" VerticalAlignment="Center"/>
+                                <TextBox Name="txtPHlevelAdd" Height="25" FontSize="16" PreviewTextInput="NumberOnly" Margin="0 5"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="0" Grid.Row="3">
+                                <TextBlock Text="Pond:" VerticalAlignment="Center"/>
+                                <ComboBox Name="pondId" Margin="0 5" Height="25" FontSize="16" PreviewTextInput="NumberOnly"/>
+                            </StackPanel>
+
                             <!---Column 2-->
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="1" Grid.Row="0">
-                                <TextBlock Text="Name:" VerticalAlignment="Center"/>
-                                <TextBox Name="name" Height="25" FontSize="16" Margin="0 5"/>
+                                <TextBlock Text="o2 level:" VerticalAlignment="Center"/>
+                                <TextBox Name="txtO2levelAdd" Height="25" FontSize="16" Margin="0 5" PreviewTextInput="NumberOnly"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="1" Grid.Row="1">
-                                <TextBlock Text="Depth:" VerticalAlignment="Center"/>
-                                <TextBox Name="depth" Height="25" FontSize="16" Margin="0 5" PreviewTextInput="NumberOnly"/>
+                                <TextBlock Text="no2 level:" VerticalAlignment="Center"/>
+                                <TextBox Name="txtNO2levelAdd" Height="25" FontSize="16" Margin="0 5" PreviewTextInput="NumberOnly"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="1" Grid.Row="2">
-                                <TextBlock Text="Volumn:" VerticalAlignment="Center"/>
-                                <TextBox Name="volumn" Margin="0 5" Height="25" FontSize="16" PreviewTextInput="NumberOnly"/>
+                                <TextBlock Text="no3 level:" VerticalAlignment="Center"/>
+                                <TextBox Name="txtNO3levelAdd" Height="25" FontSize="16" PreviewTextInput="NumberOnly" Margin="0 5"/>
                             </StackPanel>
-
-
 
                             <!---Column 3-->
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="2" Grid.Row="0">
-                                <TextBlock Text="DrainCount:" VerticalAlignment="Center"/>
-                                <TextBox Name="drainCount" Margin="0 5" Height="25" FontSize="16" PreviewTextInput="NumberOnly"/>
+                                <TextBlock Text="po4 level:" VerticalAlignment="Center" />
+                                <TextBox Name="txtPO4levelAdd" Height="25" FontSize="16" Margin="0 5" PreviewTextInput="NumberOnly"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="2" Grid.Row="1">
                                 <TextBlock Text="PumpCapacity:" VerticalAlignment="Center" />
-                                <TextBox Name="pumpCapacity" Height="25" FontSize="16" PreviewTextInput="NumberOnly" Margin="0 5" />
+                                <TextBox Name="txtTotalChlorinesAdd" Height="25" FontSize="16" Margin="0 5" PreviewTextInput="NumberOnly"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Vertical" Margin="10 5" Grid.Column="2" Grid.Row="2">
+                                <TextBlock Text="Date:" VerticalAlignment="Center"/>
+                                <DatePicker Name="txtDateAdd" Height="25" FontSize="16" Margin="0 5" SelectedDate="{Binding SelectedDate}"/>
                             </StackPanel>
                         </Grid>
 

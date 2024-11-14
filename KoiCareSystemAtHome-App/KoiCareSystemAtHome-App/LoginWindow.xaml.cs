@@ -36,20 +36,22 @@ namespace KoiCareSystemAtHome_App
             var account = accounts.FirstOrDefault(a => a.Email.Equals(email));
             if (account != null)
             {
-                if (!account.Status)
+                if (account.Status)
                 {
                     if (account.Password.Equals(password))
                     {
                         string role = account.Role;
                         if (role.Equals("guest", StringComparison.OrdinalIgnoreCase) || role.Equals("member", StringComparison.OrdinalIgnoreCase))
                         {
-                            ProfileWindow profileWindow = new ProfileWindow(account.AccId);
-                            profileWindow.Show();
+                            UserProfile userProfile = new UserProfile(account.AccId);
+                            userProfile.Show();
                             Close();
                         }
                         else if (role.Equals("admin", StringComparison.OrdinalIgnoreCase))
                         {
-
+                            AdminWindow adminWindow = new AdminWindow();
+                            adminWindow.Show();
+                            this.Close();
                         }
                         else MessageBox.Show("You don't have permission to use this function!");
                     }
@@ -58,6 +60,11 @@ namespace KoiCareSystemAtHome_App
                 else MessageBox.Show("Wrong email!");
             }
             else MessageBox.Show("Your account not exxist!");
+        }
+
+        private void btn_Close(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }
